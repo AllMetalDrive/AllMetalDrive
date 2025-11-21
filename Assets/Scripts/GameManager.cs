@@ -38,23 +38,26 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum GameState
-{
-    MainMenu,
-    VictoryScene,
-    GameOverScene,
-    Pause,
-    Boss1,
-    Boss2,
-    Boss3,
-    Lobby
-}
-
 public class GameManager : MonoBehaviour
 {
+
     // ==================================================
     // ================ VARIABLES HEADER ================
     // ==================================================
+
+    // GameState describe los estados del juego y sus escenas. Está anidado en GameManager para encapsular su uso. 
+    // Si otros scripts deben acceder a él, se referencia como `GameManager.GameState`.
+    public enum GameState
+    {
+        MainMenu,
+        VictoryScene,
+        GameOverScene,
+        Pause,
+        Boss1,
+        Boss2,
+        Boss3,
+        Lobby
+    }
 
     [Header("ESTADO DEL JUEGO")]
     // Estado actual del juego
