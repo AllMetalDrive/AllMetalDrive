@@ -74,7 +74,7 @@ Siempre debes:
 
 ---
 
-## ⚙️ **Flujo de Trabajo Rápido**
+##  **Flujo de Trabajo Rápido**
 
 ### 1️ Sincronizar `develop`
 
