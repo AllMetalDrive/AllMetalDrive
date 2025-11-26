@@ -62,10 +62,10 @@ void Start(){
     opened=false;
 }
 void Update(){
-    if(!opened&&interactable/*&&inventory.tokens>=cost*/&&Input.GetKeyDown(KeyCode.E)/*future devs change this to actually check INTERACT key, not E*/){
-        opened=true;
-        //-1 token in inventory
+    if(interactable && Input.GetKeyDown(KeyCode.E) && !opened){
+        Debug.Log("Opening Gacha Chest");
         gachaMenu.ShowMenu();
+        opened=true;
     }
 }
 
@@ -78,15 +78,19 @@ void Update(){
 /// </summary>
 
 
-void OnTriggerEnter(Collider col){
-    if(col.gameObject.CompareTag("Player")){
+void OnTriggerEnter(Collider col)
+{
+    if(col.gameObject.layer == LayerMask.NameToLayer("Player"))
+    {
         interactable=true;
         uimsg.Say("[E] Open"); //future devs swap this out for your system
     }
 }
-void OnTriggerExit(Collider col){
-    if(col.gameObject.CompareTag("Player")){
-        interactable=false;
+void OnTriggerExit(Collider col)
+{
+    if(col.gameObject.layer == LayerMask.NameToLayer("Player"))
+    {
+        interactable = false;
     }
 }
 

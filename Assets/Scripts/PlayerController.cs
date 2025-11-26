@@ -35,7 +35,6 @@
 using UnityEngine;
 using System.Collections.Generic; // Necesario para la lista de armas
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
     // =======================================================
@@ -95,7 +94,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     // --- Variables Privadas (Estado) ---
-    private Rigidbody2D _rb;
+    private Rigidbody _rb;
     private bool _isGrounded;
     private bool _isDashing;
     private bool _canDash = true;
@@ -123,7 +122,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody>();
 
         // Inicializar arrays de armas para f�cil acceso
         _weaponProjectiles = new GameObject[] { weapon1Projectile, weapon2Projectile, weapon3Projectile };
@@ -151,7 +150,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // Verificaciones de estado
-        _isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        _isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckRadius, groundLayer);
 
         if (_isDashing) return; // Si est� en dash, no hacer nada m�s
 
@@ -297,48 +296,47 @@ public class PlayerController : MonoBehaviour
     {
         // Reseteamos la velocidad vertical para un salto consistente
         _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, 0f);
-        _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        _rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
     }
 
     /// <summary>
     /// Aplica una gravedad modificada para un mejor "game feel" del salto.
     /// </summary>
-    private void ApplyBetterGravity()
+private void ApplyBetterGravity()
+{
+    if (_rb.linearVelocity.y < 0)
     {
-        if (_rb.linearVelocity.y < 0)
-        {
-            _rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
-        }
-        else if (_rb.linearVelocity.y > 0 && !Input.GetButton("Jump"))
-        {
-            _rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
-        }
+        _rb.linearVelocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
     }
+    else if (_rb.linearVelocity.y > 0 && !Input.GetButton("Jump"))
+    {
+        _rb.linearVelocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
+    }
+}
 
     /// <summary>
     /// Inicia el estado de Dash.
     /// </summary>
-    private void StartDash()
-    {
-        _isDashing = true;
-        _canDash = false;
-        _dashTimer = dashDuration;
-        _dashCooldownTimer = dashCooldown;
+  private void StartDash()
+{
+    _isDashing = true;
+    _canDash = false;
+    _dashTimer = dashDuration;
+    _dashCooldownTimer = dashCooldown;
 
-        _rb.gravityScale = 0; // Ignorar gravedad durante el dash
-        _rb.linearVelocity = new Vector2(_facingRight ? dashSpeed : -dashSpeed, 0);
-    }
+    _rb.useGravity = false; // Desactivar gravedad durante el dash
+    _rb.linearVelocity = new Vector3(_facingRight ? dashSpeed : -dashSpeed, 0, 0);
+}
 
     /// <summary>
     /// Termina el estado de Dash.
     /// </summary>
-    private void StopDash()
-    {
-        _isDashing = false;
-        _rb.gravityScale = 1; // Restaurar gravedad (o tu valor original)
-        _rb.linearVelocity = Vector2.zero; // Detenerse bruscamente
-    }
-
+   private void StopDash()
+{
+    _isDashing = false;
+    _rb.useGravity = true; // Restaurar gravedad
+    _rb.linearVelocity = Vector3.zero; // Detenerse bruscamente
+}
     /// <summary>
     /// Gira el "transform" del jugador para que mire en la direcci�n opuesta.
     /// </summary>
