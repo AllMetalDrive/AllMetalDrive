@@ -24,7 +24,7 @@
 *******************************************************/
 using UnityEngine;
 using TMPro;
-public class UIMsg : MonoBehaviour
+public abstract class UIMsg : MonoBehaviour
 {
 
 

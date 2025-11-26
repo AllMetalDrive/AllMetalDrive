@@ -42,7 +42,8 @@ public class Projectile : MonoBehaviour
 
     // Velocidad a la que se mueve el proyectil
     public float projectileSpeed = 25f;
-
+    
+ 
     [Header("REFERENCIAS")]
     // Efecto de part�cula al impactar (Opcional)
     [SerializeField] private GameObject hitEffect;
@@ -127,10 +128,10 @@ public class Projectile : MonoBehaviour
             Instantiate(hitEffect, transform.position, Quaternion.identity);
         }
 
-        // Desactivar el Rigidbody para que no se mueva m�s al impactar
+        // Desactivar el Rigidbody para que no se mueva mas al impactar
         _rb.linearVelocity = Vector2.zero;
-        _rb.isKinematic = true;
-
+        _rb.bodyType = RigidbodyType2D.Kinematic;
+    
         // Desactivar el collider
         GetComponent<Collider2D>().enabled = false;
 
