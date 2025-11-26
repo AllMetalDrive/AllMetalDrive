@@ -182,11 +182,13 @@ public class PlayerController : MonoBehaviour
         }
 
         // Input de Dash
-        if (Input.GetButtonDown("Dash") && _canDash && !_isShooting) // "Dash" (mapear en Edit > Project Settings > Input Manager)
+
+        if (Input.GetKeyDown(KeyCode.LeftShift)  && _canDash && !_isShooting) // "Dash" (mapear en Edit > Project Settings > Input Manager)
         {
             StartDash();
         }
     }
+    
 
     /// <summary>
     /// Gestiona los contadores de tiempo para cooldowns (Dash, Disparo).
