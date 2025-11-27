@@ -253,8 +253,38 @@ void SetPaused(bool value){
         Time.timeScale=1f;
     }
 }
-public void SelectCard(int slotIdx){
-    cards[slotIdx].Action();
+public void SelectCard(int slotIdx)
+{
+    if (cards[slotIdx] != null)
+    {
+        // Obtener el buff de la carta seleccionada
+        Buff cardBuff = cards[slotIdx].GetBuff();
+        
+        if (cardBuff != null)
+        {
+            // Buscar al jugador y aplicar el buff
+            PlayerController player = FindAnyObjectByType<PlayerController>(); // CAMBIADO
+            if (player != null)
+            {
+                BuffManager buffManager = player.GetComponent<BuffManager>();
+                if (buffManager != null)
+                {
+                    buffManager.ApplyBuff(cardBuff);
+                    
+                    // Mostrar mensaje de buff aplicado
+                    UIMsg uiMsg = FindAnyObjectByType<UIMsg>(); // CAMBIADO
+                    if (uiMsg != null)
+                    {
+                        uiMsg.Say($"¡{cardBuff.buffName} aplicado!");
+                    }
+                }
+            }
+        }
+        
+        // Ejecutar la acción específica de la carta
+        cards[slotIdx].Action();
+    }
+    
     HideMenu();
 }
 
