@@ -3,7 +3,7 @@
 * Script: GameManager.cs
 * Author: Rodrigo Garcia de Quevedo Contreras
 * Created: 18/11/2025
-* Last Modified: 18/11/2025 by Rodrigo Garcia de Quevedo Contreras
+* Last Modified: 27/11/2025 by Rodrigo Garcia de Quevedo Contreras
 *
 * Description:
 * Administrador central del juego que maneja los estados del juego
@@ -60,18 +60,18 @@ public class GameManager : MonoBehaviour
     }
 
     [Header("ESTADO DEL JUEGO")]
-    // Estado actual del juego
+    // Estado actual y previo del juego
     [SerializeField] private GameState currentState = GameState.MainMenu;
-
-    // Estado previo antes de pausar
     private GameState previousState;
 
     // Indica si el juego está pausado
     private bool _isPaused = false;
 
     [Header("CONFIGURACIÓN DE ESCENAS")]
-    // Escena inicial a cargar automáticamente (opcional)
     [SerializeField] private string initialSceneName = "";
+
+    [Header("UI DE PAUSA (ASIGNAR PANEL)")]
+    [SerializeField] private GameObject pauseMenuUI;
 
     // Instancia única del GameManager
     private static GameManager _instance;
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        // Evita duplicados del GameManager
+        //Evita duplicados del GameManager
         if (_instance != null && _instance != this)
         {
             Destroy(gameObject);
@@ -99,6 +99,19 @@ public class GameManager : MonoBehaviour
         // Cargar escena inicial si está asignada
         if (!string.IsNullOrEmpty(initialSceneName))
             LoadScene(initialSceneName);
+
+        // Ocultar el menú al iniciar
+        if (pauseMenuUI != null)
+            pauseMenuUI.SetActive(false);
+    }
+
+    private void Update()
+    {
+        // Detectar ESC para pausar
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePause();
+        }
     }
 
     // ==================================================
@@ -110,6 +123,13 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ChangeState(GameState newState)
     {
+        // Si otro script llama ChangeState(Pause), tratamos esto como un toggle.
+        if (newState == GameState.Pause)
+        {
+            TogglePause();
+            return;
+        }
+
         currentState = newState;
 
         switch (newState)
@@ -148,10 +168,6 @@ public class GameManager : MonoBehaviour
                 LoadScene("GameOverScene");
                 ResumeGame();
                 break;
-
-            case GameState.Pause:
-                PauseGame();
-                break;
         }
     }
 
@@ -180,9 +196,12 @@ public class GameManager : MonoBehaviour
     {
         if (_isPaused) return;
 
-        previousState = currentState;   // Guardar el estado antes de pausar
+        previousState = currentState;
         _isPaused = true;
         Time.timeScale = 0f;
+
+        if (pauseMenuUI != null)
+            pauseMenuUI.SetActive(true);
     }
 
     /// <summary>
@@ -194,6 +213,12 @@ public class GameManager : MonoBehaviour
 
         _isPaused = false;
         Time.timeScale = 1f;
+
+        if (pauseMenuUI != null)
+            pauseMenuUI.SetActive(false);
+
+        // Restaura correctamente el estado previo
+        currentState = previousState;
     }
 
     /// <summary>
@@ -203,13 +228,11 @@ public class GameManager : MonoBehaviour
     {
         if (_isPaused)
         {
-            // Al reanudar regresamos al estado anterior
             ResumeGame();
-            ChangeState(previousState);
         }
         else
         {
-            ChangeState(GameState.Pause);
+            PauseGame();
         }
     }
 
@@ -227,5 +250,13 @@ public class GameManager : MonoBehaviour
     public void TriggerVictory()
     {
         ChangeState(GameState.VictoryScene);
+    }
+
+    /// <summary>
+    /// Regresa si el juego está actualmente pausado.
+    /// </summary>
+    public bool IsPaused()
+    {
+        return _isPaused;
     }
 }

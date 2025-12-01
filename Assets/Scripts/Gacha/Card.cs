@@ -25,24 +25,18 @@
 using UnityEngine;
 public abstract class Card : MonoBehaviour
 {
+    [Header("COMPONENTS")]
+    public string cardName = "Card";
+    public Sprite img;
+    
+    [Header("BUFF")]
+    public Buff cardBuff;  // El ScriptableObject del buff
 
-
-// ==================================================
-// ================ VARIABLES HEADER ================
-// ==================================================
-[Header("COMPONENTS")]
-//the card's name
-public string cardName="Card";
-//the card's image
-public Sprite img;
-
-// ==================================================
-// =============== MAIN METHODS ===============
-// ==================================================
-/// <summary>
-/// Each card template (class child) has its own functionality,
-/// this is to call it in general.
-/// </summary>
-
-public abstract void Action();
+    public abstract void Action();
+    
+    // Nuevo metodo para obtener el buff
+    public Buff GetBuff()
+    {
+        return cardBuff;
+    }
 }

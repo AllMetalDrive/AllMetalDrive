@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Card2
   cardName: test6
   img: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  cardBuff: {fileID: 11400000, guid: 2796d41f2dd9c5f479e4039ba68d3f82, type: 2}

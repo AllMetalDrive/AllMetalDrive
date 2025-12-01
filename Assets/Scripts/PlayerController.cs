@@ -93,6 +93,11 @@ public class PlayerController : MonoBehaviour
     // Qu� capas ("Layers") se consideran "suelo"
     [SerializeField] private LayerMask groundLayer;
 
+    [Header("BASE STATS")]
+    [SerializeField] private float baseMoveSpeed;
+    [SerializeField] private float baseJumpForce;
+    [SerializeField] private float baseDashSpeed;
+
     // --- Variables Privadas (Estado) ---
     private Rigidbody _rb;
     private bool _isGrounded;
@@ -129,6 +134,14 @@ public class PlayerController : MonoBehaviour
         _weaponFireRates = new float[] { weapon1FireRate, weapon2FireRate, weapon3FireRate };
 
         _aimDirection = Vector2.right; // Apuntar a la derecha por defecto
+        
+            _rb = GetComponent<Rigidbody>();
+    
+        // Guardar valores base (AGREGAR ESTAS 3 LÍNEAS)
+        baseMoveSpeed = moveSpeed;
+        baseJumpForce = jumpForce;
+        baseDashSpeed = dashSpeed;
+        
     }
 
     /// <summary>
@@ -337,6 +350,7 @@ private void ApplyBetterGravity()
     _rb.useGravity = true; // Restaurar gravedad
     _rb.linearVelocity = Vector3.zero; // Detenerse bruscamente
 }
+
     /// <summary>
     /// Gira el "transform" del jugador para que mire en la direcci�n opuesta.
     /// </summary>
@@ -422,5 +436,20 @@ private void ApplyBetterGravity()
         {
             projScript.SetDirection(direction);
         }
+    }
+
+    // Nuevos métodos para buffs (AGREGAR AL FINAL DEL ARCHIVO)
+    public void ResetToBaseStats()
+    {
+        moveSpeed = baseMoveSpeed;
+        jumpForce = baseJumpForce;
+        dashSpeed = baseDashSpeed;
+    }
+
+    public void ApplyBuffModifiers(Buff buff)
+    {
+        moveSpeed *= buff.moveSpeedMultiplier;
+        jumpForce *= buff.jumpForceMultiplier;
+        dashSpeed *= buff.dashSpeedMultiplier;
     }
 }
