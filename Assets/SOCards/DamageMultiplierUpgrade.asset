@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1966b181f589a40b33fcc86ef26c46, type: 3}
+  m_Name: DamageMultiplierUpgrade
+  m_EditorClassIdentifier: Assembly-CSharp::CardUpgradeSO
+  upgradeName: Damage Multiplier
+  description: "Multiplica el da\xF1o de arma por 2"
+  icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  rarity: 3
+  moveSpeedBonus: 0
+  jumpForceBonus: 0
+  dashSpeedBonus: 0
+  dashCooldownReduction: 0
+  damageMultiplier: 2
+  fireRateMultiplier: 0
+  projectileSpeedMultiplier: 0
+  lifetimeMultiplier: 0
+  doubleJump: 0
+  airDash: 0
+  piercingShots: 0
+  explosiveShots: 0
+  isStackable: 1
+  maxStacks: 1
