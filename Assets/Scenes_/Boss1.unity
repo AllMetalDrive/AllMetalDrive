@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 64435086}
   - component: {fileID: 64435087}
   - component: {fileID: 64435088}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,7 +603,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 869206578}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GachaMenu, Assembly-CSharp
         m_MethodName: SelectCard
         m_Mode: 3
@@ -917,7 +917,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 425611360}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManagerUpdated, Assembly-CSharp
         m_MethodName: ResumeGame
         m_Mode: 1
@@ -6598,7 +6598,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 869206578}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GachaMenu, Assembly-CSharp
         m_MethodName: SelectCard
         m_Mode: 3
@@ -6765,12 +6765,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e384d75681da21f4da071ea363e66bb6, type: 3}
+  m_Script: {fileID: 11500000, guid: a6f4062dffbd3374c9b7c2fa0ff81e81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
-  playerTransform: {fileID: 353449490}
+  playerTransform: {fileID: 806195103}
   followSpeed: 5
-  offset: {x: 0, y: 0, z: -10}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!1 &346907368
 GameObject:
   m_ObjectHideFlags: 0
@@ -6813,7 +6813,6 @@ GameObject:
   - component: {fileID: 353449490}
   - component: {fileID: 353449489}
   - component: {fileID: 353449488}
-  - component: {fileID: 353449486}
   - component: {fileID: 353449492}
   - component: {fileID: 353449491}
   m_Layer: 7
@@ -6823,39 +6822,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &353449486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 353449485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afd92bd497ea43d41bf0b00061b9f7ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 8
-  jumpForce: 15
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 2
-  dashSpeed: 20
-  dashDuration: 0.2
-  dashCooldown: 1
-  weapon1Projectile: {fileID: 2619215356376459001, guid: 16f99474ecb45ca4ebf82c6fd7e05e5f, type: 3}
-  weapon1FireRate: 2
-  weapon2Projectile: {fileID: 5597527294290204278, guid: 8c93f45f18ba0ec4aa2cd8a8b3bfaf1e, type: 3}
-  weapon2FireRate: 1
-  shotgunPelletCount: 5
-  shotgunSpreadAngle: 15
-  weapon3Projectile: {fileID: 3884922979722937230, guid: 6cce25ef87dea4241a078f9f20daab56, type: 3}
-  weapon3FireRate: 0.5
-  firePoint: {fileID: 346907369}
-  groundCheck: {fileID: 1779459886}
-  groundCheckRadius: 0.2
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!23 &353449488
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6920,14 +6886,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353449485}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.11, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.97397, y: 1.11, z: 5.47742}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 346907369}
   - {fileID: 1779459886}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1557247918}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &353449491
 CapsuleCollider:
@@ -7738,6 +7704,7 @@ Transform:
   m_Children:
   - {fileID: 1782152605}
   - {fileID: 1473162329}
+  - {fileID: 1253489962}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &425611359
@@ -7761,17 +7728,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 425611357}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 284ddfe6d941b90468ba34e633333662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManagerUpdated
   currentState: 1
-  initialSceneName: 
+  initialSceneName: Boss1
   pauseMenuPanel: {fileID: 1097616197}
   gameOverMenuPanel: {fileID: 921719818}
   VictoryMenuPanel: {fileID: 0}
-  pauseKey: 112
+  uiScreenManager: {fileID: 1253489963}
+  pauseKey: 27
 --- !u!1 &440165704
 GameObject:
   m_ObjectHideFlags: 0
@@ -8568,7 +8536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 653412600}
   - component: {fileID: 653412601}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: ASide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8929,9 +8897,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 716067267}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: GrounCheck
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9113,7 +9081,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 425611360}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManagerUpdated, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
@@ -9246,7 +9214,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 425611360}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManagerUpdated, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
@@ -14366,7 +14334,7 @@ GameObject:
   - component: {fileID: 806195108}
   - component: {fileID: 806195109}
   - component: {fileID: 806195110}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Player2D
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -14542,7 +14510,7 @@ MonoBehaviour:
   groundRadius: 0.2
   groundLayer:
     serializedVersion: 2
-    m_Bits: 16
+    m_Bits: 256
   dashForce: 18
   dashCooldown: 1.2
   dashKey: 304
@@ -15221,7 +15189,6 @@ GameObject:
   - component: {fileID: 869136910}
   - component: {fileID: 869136909}
   - component: {fileID: 869136908}
-  - component: {fileID: 869136907}
   - component: {fileID: 869136912}
   m_Layer: 0
   m_Name: Chest
@@ -15230,20 +15197,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &869136907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 869136906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 213f229e6044f614e80ef014ee1607cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GachaChest
-  gachaMenu: {fileID: 0}
-  uimsg: {fileID: 0}
 --- !u!65 &869136908
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15330,11 +15283,11 @@ Transform:
   m_GameObject: {fileID: 869136906}
   serializedVersion: 2
   m_LocalRotation: {x: 0.011297611, y: 0.009368093, z: 0.0053092055, w: 0.9998782}
-  m_LocalPosition: {x: 3.56361, y: 0.22, z: -0.14501}
-  m_LocalScale: {x: 1, y: 0.99994, z: 1}
+  m_LocalPosition: {x: -7.4103603, y: 0.22, z: 5.33241}
+  m_LocalScale: {x: 1, y: 0.99993986, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1557247918}
   m_LocalEulerAnglesHint: {x: 1.289, y: 1.081, z: 0.621}
 --- !u!65 &869136912
 BoxCollider:
@@ -15369,8 +15322,6 @@ GameObject:
   - component: {fileID: 869206576}
   - component: {fileID: 869206575}
   - component: {fileID: 869206574}
-  - component: {fileID: 869206578}
-  - component: {fileID: 869206579}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -15454,7 +15405,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 762722650}
-  - {fileID: 1312419863}
   - {fileID: 584359246}
   - {fileID: 834732824}
   m_Father: {fileID: 0}
@@ -15464,61 +15414,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &869206578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 869206573}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8c582d2fa3e3cb499a14a3946b3b7ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GachaMenu
-  prizes5s:
-  - {fileID: 8959596776804288393, guid: 3a12ee2236e74954a93a43592ba6a86e, type: 3}
-  - {fileID: 4355919585288885455, guid: 39346b7b0777d0a4281e9483a8f38625, type: 3}
-  - {fileID: 6539628753745706862, guid: 278581042e5f76346adbb90d4eda4858, type: 3}
-  prizes4s:
-  - {fileID: 694172654694349637, guid: af4a8afe9d6f3904e930e49627406a0a, type: 3}
-  - {fileID: 348496758662172086, guid: 956e7755ae7566c429c4d557ac2906f9, type: 3}
-  - {fileID: 7157056130842363647, guid: c95591b4627c6c1488f417407e350aa1, type: 3}
-  prizes3s:
-  - {fileID: 8065638353266559693, guid: 264c62341ac4afe419d2432ca22dd0c9, type: 3}
-  - {fileID: 4498539489675635783, guid: 9cb60ffcb339545429d9c6ffa1964c20, type: 3}
-  - {fileID: 7369400637029983908, guid: c774bb490adfdc645b54e570479f007f, type: 3}
-  probability5s: 0.01
-  probability4s: 1
-  pity5s: 90
-  pity4s: 10
-  hasPity: 0
-  alsoReset4s: 1
-  sharedRarity: 0
-  allowDupes: 0
-  menu: {fileID: 2146389751}
-  cardImgs:
-  - {fileID: 1875231701}
-  - {fileID: 125795075}
-  - {fileID: 2118210428}
-  cardTxs:
-  - {fileID: 1003719955}
-  - {fileID: 140219171}
-  - {fileID: 808973208}
---- !u!114 &869206579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 869206573}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f005efe52550ed4eace82768534b151, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UIMsg
-  message: {fileID: 1971263008}
-  lifetime: 1
 --- !u!1 &890235352
 GameObject:
   m_ObjectHideFlags: 0
@@ -15804,7 +15699,7 @@ GameObject:
   - component: {fileID: 915577997}
   - component: {fileID: 915577996}
   - component: {fileID: 915577998}
-  m_Layer: 4
+  m_Layer: 8
   m_Name: MainGround
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -16580,7 +16475,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 425611360}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManagerUpdated, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
@@ -16642,7 +16537,6 @@ GameObject:
   - component: {fileID: 1189469789}
   - component: {fileID: 1189469788}
   - component: {fileID: 1189469787}
-  - component: {fileID: 1189469791}
   m_Layer: 0
   m_Name: Chest3D
   m_TagString: Untagged
@@ -16742,20 +16636,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1189469791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1189469786}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 213f229e6044f614e80ef014ee1607cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GachaChest
-  gachaMenu: {fileID: 0}
-  uimsg: {fileID: 0}
 --- !u!1 &1197925560
 GameObject:
   m_ObjectHideFlags: 0
@@ -16942,6 +16822,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1234913912}
   m_CullTransparentMesh: 1
+--- !u!1 &1253489961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1253489962}
+  - component: {fileID: 1253489963}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1253489962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253489961}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 425611358}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1253489963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253489961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30cffe46bd14048448c7827a37e1ead7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIScreenManager
+  gameOverScreen: {fileID: 921719818}
+  victoryScreen: {fileID: 0}
 --- !u!1 &1312419862
 GameObject:
   m_ObjectHideFlags: 0
@@ -16967,20 +16893,20 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1312419862}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 5.47742}
+  m_LocalScale: {x: 0.6026214, y: 0.6026214, z: 0.6026214}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1772442423}
   - {fileID: 319939669}
   - {fileID: 1934697468}
   - {fileID: 93960811}
-  m_Father: {fileID: 869206577}
+  m_Father: {fileID: 1557247918}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 562.6927, y: 328.16666}
   m_SizeDelta: {x: 1720, y: 880}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1312419864
@@ -17483,6 +17409,7 @@ GameObject:
   - component: {fileID: 1473162329}
   - component: {fileID: 1473162331}
   - component: {fileID: 1473162330}
+  - component: {fileID: 1473162332}
   m_Layer: 0
   m_Name: GachaMenuManager
   m_TagString: Untagged
@@ -17551,6 +17478,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GachaMenuOpener
   gachaMenuSO: {fileID: 1473162330}
+--- !u!114 &1473162332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473162328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af354873a9f6f840823c64241f8292a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIMsg
+  message: {fileID: 1971263008}
+  lifetime: 5
 --- !u!1 &1481496241
 GameObject:
   m_ObjectHideFlags: 0
@@ -17707,6 +17648,43 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1557247917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1557247918}
+  m_Layer: 0
+  m_Name: Off
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1557247918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557247917}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.97397, y: 0, z: -5.47742}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2131668262}
+  - {fileID: 353449490}
+  - {fileID: 869136911}
+  - {fileID: 2065744991}
+  - {fileID: 1312419863}
+  - {fileID: 7782003446230921507}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1590571808
@@ -22665,7 +22643,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1641142412}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23335,11 +23313,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1887884870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 213f229e6044f614e80ef014ee1607cd, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e70f783965c9a148b7a2eafeb6b8d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GachaChest
-  gachaMenu: {fileID: 2146389751}
-  uimsg: {fileID: 869206579}
+  gachaMenu: {fileID: 1473162328}
+  uimsg: {fileID: 1473162332}
 --- !u!1 &1934697467
 GameObject:
   m_ObjectHideFlags: 0
@@ -23423,7 +23401,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 869206578}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GachaMenu, Assembly-CSharp
         m_MethodName: SelectCard
         m_Mode: 3
@@ -23987,9 +23965,9 @@ GameObject:
   - component: {fileID: 2061157745}
   - component: {fileID: 2061157744}
   - component: {fileID: 2061157743}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 3DGround
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24096,8 +24074,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2065744991}
   - component: {fileID: 2065744990}
-  - component: {fileID: 2065744989}
   - component: {fileID: 2065744992}
+  - component: {fileID: 2065744993}
   m_Layer: 0
   m_Name: GachaChest2D
   m_TagString: Untagged
@@ -24105,20 +24083,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &2065744989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2065744988}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 213f229e6044f614e80ef014ee1607cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GachaChest
-  gachaMenu: {fileID: 0}
-  uimsg: {fileID: 0}
 --- !u!212 &2065744990
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24185,12 +24149,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065744988}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.13, y: -3.04, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.8439703, y: -3.04, z: 5.47742}
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1557247918}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2065744992
 BoxCollider2D:
@@ -24238,6 +24202,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2065744993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065744988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e70f783965c9a148b7a2eafeb6b8d03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GachaChest
+  gachaMenu: {fileID: 1473162328}
+  uimsg: {fileID: 1473162332}
 --- !u!1 &2118210424
 GameObject:
   m_ObjectHideFlags: 0
@@ -24396,12 +24374,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2131668258}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.07, y: -1.17, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10.903971, y: -1.17, z: 5.47742}
   m_LocalScale: {x: 40.110302, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1557247918}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2131668263
 BoxCollider:
@@ -24924,9 +24902,11 @@ GameObject:
   - component: {fileID: 6043760083876935963}
   - component: {fileID: 7505914525277589805}
   - component: {fileID: 8551974537753724964}
+  - component: {fileID: 8551974537753724966}
+  - component: {fileID: 8551974537753724965}
   m_Layer: 0
   m_Name: Boss2D_Mancillas
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25078,7 +25058,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -25304,12 +25284,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4437551550052931512}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.61, y: -2.87, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -17.583971, y: -2.87, z: 5.47742}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1557247918}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &7967583238942736943
 Rigidbody2D:
@@ -25406,7 +25386,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.3, y: 0.28, z: 0}
-  m_LocalScale: {x: 2.04, y: 2.04, z: 2.04}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3661020689418743165}
@@ -25439,6 +25419,40 @@ MonoBehaviour:
   playerTransform: {fileID: 806195103}
   arenaBoundary: {fileID: 404123820}
   animator: {fileID: 7505914525277589805}
+--- !u!114 &8551974537753724965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717783559106013079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458a3fca7c441e045b19101624604629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthFeedback
+  enemyHealth: {fileID: 8551974537753724966}
+  audioManager: {fileID: 1782152606}
+  damageEffect: {fileID: 0}
+  healEffect: {fileID: 0}
+  deathEffect: {fileID: 0}
+  effectLifetime: 2
+--- !u!114 &8551974537753724966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717783559106013079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8c499af5f02c9047ac83a16c2364a14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 100
+  currentHealth: 100
+  canTakeDamage: 1
+  enemyHealthFeedback: {fileID: 8551974537753724965}
 --- !u!224 &8707206321420517040
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25525,10 +25539,6 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 990568762}
   - {fileID: 425611358}
-  - {fileID: 2131668262}
-  - {fileID: 353449490}
-  - {fileID: 869136911}
-  - {fileID: 2065744991}
   - {fileID: 1365154757}
   - {fileID: 803533651}
   - {fileID: 806195103}
@@ -25545,6 +25555,6 @@ SceneRoots:
   - {fileID: 484492669}
   - {fileID: 978714307}
   - {fileID: 455232202}
-  - {fileID: 7782003446230921507}
   - {fileID: 8467411355539009093}
   - {fileID: 404123822}
+  - {fileID: 1557247918}

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GachaMenuOpener : MonoBehaviour
 {
-    public GachaMenuSO gachaMenuSO; // Asigna el script en el inspector
+    public CardUpgradeGachaMenuSO gachaMenuSO; // Asigna el script en el inspector
 
     // Llama este método desde un botón, evento, etc.
     public void OpenGachaMenu()
