@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7404198786267103028
+--- !u!1 &4437551549453524509
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,41 +8,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5144595055250281512}
-  - component: {fileID: 7796256950640468302}
-  - component: {fileID: 414299807828142641}
-  - component: {fileID: 1025680620896022927}
-  - component: {fileID: 6871616129708966350}
-  - component: {fileID: -3127839095410048923}
-  m_Layer: 9
-  m_Name: BossProjectile2D_Mancillas
-  m_TagString: Ground
+  - component: {fileID: 7782003446705518726}
+  - component: {fileID: 9111219167371165162}
+  - component: {fileID: 2835387270548190870}
+  - component: {fileID: 5179025610592072038}
+  - component: {fileID: 307547849266455547}
+  - component: {fileID: 671072317205567098}
+  - component: {fileID: 3228574421646472333}
+  - component: {fileID: 2736970343522615237}
+  m_Layer: 0
+  m_Name: EnemyBossDummy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5144595055250281512
+--- !u!4 &7782003446705518726
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7404198786267103028}
+  m_GameObject: {fileID: 4437551549453524509}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 6.68, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7796256950640468302
+--- !u!212 &9111219167371165162
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7404198786267103028}
+  m_GameObject: {fileID: 4437551549453524509}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -83,8 +85,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 0.95554936, b: 0, a: 1}
+  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -94,13 +96,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &414299807828142641
+--- !u!58 &2835387270548190870
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7404198786267103028}
+  m_GameObject: {fileID: 4437551549453524509}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -130,14 +132,14 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
---- !u!50 &1025680620896022927
+--- !u!50 &5179025610592072038
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7404198786267103028}
+  m_GameObject: {fileID: 4437551549453524509}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -157,33 +159,73 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &6871616129708966350
+--- !u!114 &307547849266455547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7404198786267103028}
+  m_GameObject: {fileID: 4437551549453524509}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63953d9fceb6c2044b83fe2fe153ca53, type: 3}
+  m_Script: {fileID: 11500000, guid: c8c499af5f02c9047ac83a16c2364a14, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BossProjectile2D
-  speed: 15
-  directDamage: 15
-  fireZonePrefab: {fileID: 7140478702708136875, guid: db5388ec940088441ab4cb1330e7fed4, type: 3}
---- !u!114 &-3127839095410048923
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 2
+  currentHealth: 100
+  canTakeDamage: 1
+  enemyHealthFeedback: {fileID: 671072317205567098}
+--- !u!114 &671072317205567098
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7404198786267103028}
+  m_GameObject: {fileID: 4437551549453524509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458a3fca7c441e045b19101624604629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthFeedback
+  enemyHealth: {fileID: 307547849266455547}
+  audioManager: {fileID: 0}
+  damageEffect: {fileID: 0}
+  healEffect: {fileID: 0}
+  deathEffect: {fileID: 0}
+  effectLifetime: 2
+--- !u!114 &3228574421646472333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437551549453524509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce922b57a3dab54db0014a184b408b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MeleeAttack
+  attackRate: 0.25
+  shooterType: 1
+  damage: 10
+  range: 1
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 8
+--- !u!114 &2736970343522615237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437551549453524509}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff79698c15ebfc94496c195696785e6d, type: 3}
+  m_Script: {fileID: 11500000, guid: 77c6dcc6d9828c44cad575d80bf5c8f7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DamageZone2D
-  duration: 3
-  damagePerSecond: 5
-  damageTickRate: 0.5
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileAttack
+  attackRate: 0.25
+  shooterType: 0
+  projectilePrefab: {fileID: 0}
+  firePoint: {fileID: 0}
+  audioManager: {fileID: 0}

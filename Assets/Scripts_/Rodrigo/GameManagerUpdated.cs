@@ -13,7 +13,7 @@ public class GameManagerUpdated : MonoBehaviour
 		Gameplay,
 		Pause,
 		VictoryScene,
-		GameOverScene,
+		GameOverScreen,
 		Lobby
 	}
 
@@ -32,7 +32,10 @@ public class GameManagerUpdated : MonoBehaviour
 	[Header("MENÚS UI")]
 	[SerializeField] private GameObject pauseMenuPanel; // Asigna el panel del menú de pausa en el inspector
 	[SerializeField] private GameObject gameOverMenuPanel; // Asigna el panel del menú de Game Over en el inspector
-    [SerializeField] private GameObject VictoryMenuPanel; // Asigna el panel del menú de Victoria en el inspector
+	[SerializeField] private GameObject VictoryMenuPanel; // Asigna el panel del menú de Victoria en el inspector
+
+	[Header("REFERENCIAS")]
+	[SerializeField] private UIScreenManager uiScreenManager; // Referencia al manejador de pantallas UI
 
 	// ==================================================
 	// ================== EVENTOS UNITY =================
@@ -100,9 +103,9 @@ public class GameManagerUpdated : MonoBehaviour
 			case GameState.VictoryScene:
 				if (VictoryMenuPanel != null)
 					VictoryMenuPanel.SetActive(true);
-				ResumeGame();
+				// ResumeGame(); // No es necesario llamar a ResumeGame aquí. Activar el cofre de victoria no requiere reanudar el juego.
 				break;
-			case GameState.GameOverScene:
+			case GameState.GameOverScreen:
 				if (gameOverMenuPanel != null)
 					gameOverMenuPanel.SetActive(true);
 				break;
@@ -152,7 +155,7 @@ public class GameManagerUpdated : MonoBehaviour
 		{
 			ResumeGame();
 			// Solo regresa al estado previo si es válido
-			if (previousState != GameState.Pause && previousState != GameState.GameOverScene)
+			if (previousState != GameState.Pause && previousState != GameState.GameOverScreen)
 				ChangeState(previousState);
 		}
 		else
@@ -163,11 +166,22 @@ public class GameManagerUpdated : MonoBehaviour
 
 	public void TriggerGameOver()
 	{
-		ChangeState(GameState.GameOverScene);
+		ChangeState(GameState.GameOverScreen);
+
+		// Mostrar pantalla de Game Over
+		if (uiScreenManager != null)
+		{
+			uiScreenManager.ShowGameOver();
+		}
+		else
+		{
+			Debug.LogWarning("PlayerHealth: UIScreenManager no asignado.");
+		}
 	}
 
 	public void TriggerVictory()
 	{
 		ChangeState(GameState.VictoryScene);
+		Debug.Log("¡Victoria! Has derrotado al boss.");
 	}
 }

@@ -7,9 +7,7 @@
 *
 * Description:
 * Controls the player's 2.5D movement (2D physics) and combat.
-* Manages movement, jumping, dash, and a 3-weapon swap system.
-* Implements a "shooting mode" where movement is locked and movement keys
-* are used to aim in 8 directions.
+* Manages movement, jumping, dash.
 *
 * Hours Worked: 2
 *
