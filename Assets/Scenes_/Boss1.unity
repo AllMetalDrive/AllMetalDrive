@@ -8781,7 +8781,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 164732159}
-  - {fileID: 2112220577}
   - {fileID: 1097616198}
   - {fileID: 2146389752}
   - {fileID: 921719819}
@@ -14167,6 +14166,7 @@ GameObject:
   - component: {fileID: 806195108}
   - component: {fileID: 806195109}
   - component: {fileID: 806195110}
+  - component: {fileID: 806195111}
   m_Layer: 7
   m_Name: Player2D
   m_TagString: Player
@@ -14579,7 +14579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c63157bea25767a4395cec03ccc5b963, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.4954
+      value: 7.44
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c63157bea25767a4395cec03ccc5b963, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14587,7 +14587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c63157bea25767a4395cec03ccc5b963, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.951
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c63157bea25767a4395cec03ccc5b963, type: 3}
       propertyPath: m_LocalRotation.w
@@ -16244,6 +16244,7 @@ RectTransform:
   - {fileID: 764165278}
   - {fileID: 2010342590}
   - {fileID: 154854142}
+  - {fileID: 440165705}
   m_Father: {fileID: 762722650}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -16577,7 +16578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1197925561
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22631,6 +22632,7 @@ Transform:
   - {fileID: 221909117}
   - {fileID: 1367898956}
   - {fileID: 1590571811}
+  - {fileID: 1197925564}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1772442422
@@ -24823,6 +24825,8 @@ GameObject:
   - component: {fileID: 8551974537753724964}
   - component: {fileID: 8551974537753724966}
   - component: {fileID: 8551974537753724965}
+  - component: {fileID: 8551974537753724967}
+  - component: {fileID: 8551974537753724968}
   m_Layer: 0
   m_Name: Boss2D_Mancillas
   m_TagString: Enemy
@@ -24947,42 +24951,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 20, y: -20}
   m_UseGraphicAlpha: 1
---- !u!58 &6043760083876935963
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3717783559106013079}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
 --- !u!224 &6174908404606352302
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25315,7 +25283,7 @@ MonoBehaviour:
   slamRecoveryTime: 1.5
   playerTransform: {fileID: 806195103}
   arenaBoundary: {fileID: 404123820}
-  animator: {fileID: 7505914525277589805}
+  animator: {fileID: 0}
 --- !u!114 &8551974537753724965
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25350,6 +25318,65 @@ MonoBehaviour:
   currentHealth: 100
   canTakeDamage: 1
   enemyHealthFeedback: {fileID: 8551974537753724965}
+--- !u!95 &8551974537753724967
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717783559106013079}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f0b1eb0e7498ccc48bcf222a8ae3e23c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &8551974537753724968
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717783559106013079}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.3660096, y: 1.2998364}
+  m_Size: {x: 8.3052435, y: 2.5664618}
+  m_Direction: 1
 --- !u!224 &8707206321420517040
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25455,3 +25482,4 @@ SceneRoots:
   - {fileID: 8467411355539009093}
   - {fileID: 404123822}
   - {fileID: 1557247918}
+  - {fileID: 816679995}
