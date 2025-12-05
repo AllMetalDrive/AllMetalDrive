@@ -19,7 +19,7 @@ using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Animator))]
+//[RequireComponent(typeof(Animator))]
 public class BossController2D : MonoBehaviour
 {
     [Header("ESTADÍSTICAS")]
@@ -185,7 +185,6 @@ public class BossController2D : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         // animator.SetTrigger(_animAttackSlam);
         Vector2 groundPos = new Vector2(transform.position.x, arenaBoundary.bounds.min.y + 1f);
-        transform.localScale = new Vector3(10, 10, 10);
         while (Vector2.Distance(transform.position, groundPos) > 0.5f)
         {
             Vector2 newPos = Vector2.MoveTowards(transform.position, groundPos, slamSpeed * Time.deltaTime);
@@ -194,7 +193,6 @@ public class BossController2D : MonoBehaviour
         }
         yield return new WaitForSeconds(slamRecoveryTime);
         // animator.SetBool(_animIsFlying, true);
-        transform.localScale = new Vector3(1, 1, 1);
         _isAttacking = false;
     }
 
