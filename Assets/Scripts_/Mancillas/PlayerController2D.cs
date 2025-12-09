@@ -1,9 +1,9 @@
 /**
 * Project: All Metal Drive 
 * Script: PlayerController2D.cs
-* Author: Eduardo de Jesús Mancillas García (Modified by Assistant)
+* Author: Eduardo de Jesús Mancillas García
 * Created: 11/16/2025
-* Last Modified: [FECHA_ACTUAL]
+* Last Modified: 12/08/2025
 *
 * Description:
 * Controls the player's 2.5D movement, combat, and UI feedback.
