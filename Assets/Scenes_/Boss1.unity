@@ -14346,7 +14346,10 @@ MonoBehaviour:
     m_Bits: 256
   dashForce: 18
   dashCooldown: 1.2
+  dashTime: 0.15
   dashKey: 304
+  canDashInvincibility: 0
+  dashCooldownImage: {fileID: 0}
 --- !u!114 &806195108
 MonoBehaviour:
   m_ObjectHideFlags: 0
