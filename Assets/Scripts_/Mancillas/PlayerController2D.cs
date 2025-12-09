@@ -1,32 +1,19 @@
 /**
 * Project: All Metal Drive 
-* Script: PlayerController.cs
-* Author: Eduardo de Jesús Mancillas García
+* Script: PlayerController2D.cs
+* Author: Eduardo de Jesús Mancillas García (Modified by Assistant)
 * Created: 11/16/2025
-* Last Modified: 11/16/2025 by Eduardo Mancillas
+* Last Modified: [FECHA_ACTUAL]
 *
 * Description:
-* Controls the player's 2.5D movement (2D physics) and combat.
-* Manages movement, jumping, dash.
-*
-* Hours Worked: 2
-*
-* Dependencies:
-* - Rigidbody2D (required on the same GameObject)
-* - Projectile.cs (required on projectile prefabs)
-* - A child "groundCheck" GameObject used to detect the ground.
-* - A child "firePoint" GameObject used to instantiate projectiles.
-*
-* Notes / Warnings:
-* - The player must be on a Layer that is NOT included
-*   in the "groundLayer" mask for groundCheck to work.
-* - Projectiles must be prefabs with the Projectile.cs script.
-* - Horizontal movement is blocked while shooting.
+* Controls the player's 2.5D movement, combat, and UI feedback.
+* Now includes dash invincibility toggle and UI cooldown indicator.
 ********/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; // Necesario para controlar la Imagen del UI
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController2D : MonoBehaviour
@@ -49,11 +36,18 @@ public class PlayerController2D : MonoBehaviour
     [Header("Dash Settings")]
     public float dashForce = 18f;
     public float dashCooldown = 1.2f;
+    public float dashTime = 0.15f; // ¡Ahora es pública para editar en Inspector!
     public KeyCode dashKey = KeyCode.LeftShift;
+
+    [Header("Dash Upgrades & Skills")]
+    public bool canDashInvincibility = false; // Activa esto cuando el jugador obtenga el Power-Up
+    public bool IsInvincible { get; private set; } // Propiedad para que otros scripts lean si eres invencible
+
+    [Header("UI Settings")]
+    public Image dashCooldownImage; // Arrastra aquí la imagen de la UI
 
     private float nextDash = 0f;
     private bool isDashing = false;
-    private float dashTime = 0.15f;
     private float dashTimer;
 
     // --- Movimiento ---
@@ -67,27 +61,27 @@ public class PlayerController2D : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        IsInvincible = false;
     }
 
     void Update()
     {
+        // Actualizar la UI del Dash siempre
+        UpdateDashUI();
 
         if (GameManagerUpdated.Instance.CurrentState != GameManagerUpdated.GameState.Gameplay)
-            return; // No permitir movimiento si no estamos en estado Gameplay
+            return; 
 
         // INPUT MOVIMIENTO
         moveInput = Input.GetAxisRaw("Horizontal");
 
-        // FLIP DEL PERSONAJE
         HandleFlip();
 
-        // SALTO
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             Jump();
         }
 
-        // DASH
         if (Input.GetKeyDown(dashKey) && Time.time > nextDash && !isDashing)
         {
             StartDash();
@@ -96,24 +90,15 @@ public class PlayerController2D : MonoBehaviour
 
     void FixedUpdate()
     {
-        // DETECCIÓN DE PISO
-        isGrounded = Physics2D.OverlapCircle(
-            groundCheck.position,
-            groundRadius,
-            groundLayer
-        );
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
 
-        // SI ESTÁ HACIENDO DASH, IGNORA MOVIMIENTO NORMAL
         if (isDashing)
         {
             rb.linearVelocity = new Vector2((facingRight ? 1 : -1) * dashForce, 0);
             return;
         }
 
-        // MOVIMIENTO HORIZONTAL
         rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
-
-        // GRAVEDAD MEJORADA
         ApplyBetterJumpGravity();
     }
 
@@ -139,7 +124,7 @@ public class PlayerController2D : MonoBehaviour
     }
 
     // --------------------------
-    //      DASH
+    //      DASH & UI
     // --------------------------
 
     void StartDash()
@@ -148,12 +133,41 @@ public class PlayerController2D : MonoBehaviour
         dashTimer = dashTime;
         nextDash = Time.time + dashCooldown;
         rb.gravityScale = 0f;
+
+        // Lógica de Invencibilidad
+        if (canDashInvincibility)
+        {
+            IsInvincible = true;
+            // Opcional: Aquí podrías cambiar el color del sprite para indicar invencibilidad
+        }
     }
 
     void StopDash()
     {
         isDashing = false;
         rb.gravityScale = 1f;
+        
+        // Desactivar Invencibilidad
+        IsInvincible = false;
+    }
+
+    void UpdateDashUI()
+    {
+        if (dashCooldownImage == null) return; // Evita errores si no asignaste la imagen
+
+        if (Time.time > nextDash)
+        {
+            // El dash está listo
+            dashCooldownImage.fillAmount = 1; 
+        }
+        else
+        {
+            // El dash está en enfriamiento (Cooldown)
+            // Calculamos cuánto tiempo falta (de 0 a 1)
+            float cooldownRemaining = nextDash - Time.time;
+            float ratio = 1 - (cooldownRemaining / dashCooldown);
+            dashCooldownImage.fillAmount = ratio;
+        }
     }
 
     void LateUpdate()
@@ -169,53 +183,19 @@ public class PlayerController2D : MonoBehaviour
     }
 
     // --------------------------
-    //      FLIP DEL PLAYER With Ortographic Camera
-    // --------------------------
-    /* void HandleFlip()
-    {
-        if (moveInput > 0 && !facingRight)
-        {
-            Flip();
-        }
-        else if (moveInput < 0 && facingRight)
-        {
-            Flip();
-        }
-    }
-
-    void Flip()
-    {
-        facingRight = !facingRight;
-        Vector3 scale = transform.localScale;
-        scale.x *= -1; 
-        transform.localScale = scale;
-    } */
-
-    // --------------------------
-    //      FLIP DEL PLAYER With Perspective Camera
+    //      FLIP DEL PLAYER
     // --------------------------
 
     void HandleFlip()
     {
-        if (moveInput > 0 && !facingRight)
-        {
-            Flip(true);
-        }
-        else if (moveInput < 0 && facingRight)
-        {
-            Flip(false);
-        }
+        if (moveInput > 0 && !facingRight) Flip(true);
+        else if (moveInput < 0 && facingRight) Flip(false);
     }
 
     void Flip(bool faceRight)
     {
         facingRight = faceRight;
-
-        // 0° si mira a derecha, 180° si mira a izquierda
         float yRotation = faceRight ? 0f : 180f;
-
         transform.rotation = Quaternion.Euler(0, yRotation, 0);
     }
-
-
 }
