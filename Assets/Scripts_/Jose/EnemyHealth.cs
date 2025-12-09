@@ -85,14 +85,17 @@ public class EnemyHealth : HealthBase
     protected override void HandleDeath()
     {
         Debug.Log($"{gameObject.name} ha muerto.");
+    
+        GameManagerUpdated.Instance.TriggerGameOver();
 
         // Activar feedback de muerte (Audios y efectos visuales)
         enemyHealthFeedback.OnDeathFeedback();
+        // Suscribirse al callback para destruir el objeto al terminar el dissolve
+        enemyHealthFeedback.OnDissolveComplete = () => Destroy(gameObject);
 
         // TODO: Implementar animación de muerte
         // TODO: Soltar ítems o dar recompensas al jugador
         // TODO: Desactivar componentes del enemigo
 
-        //Destroy(gameObject);
     }
 }

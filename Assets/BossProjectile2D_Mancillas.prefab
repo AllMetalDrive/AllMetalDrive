@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossProjectile2D
   speed: 15
-  directDamage: 15
+  directDamage: 25
   fireZonePrefab: {fileID: 7140478702708136875, guid: db5388ec940088441ab4cb1330e7fed4, type: 3}
 --- !u!114 &-3127839095410048923
 MonoBehaviour:

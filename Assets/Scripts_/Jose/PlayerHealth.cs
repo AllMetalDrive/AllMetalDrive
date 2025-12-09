@@ -93,7 +93,7 @@ public class PlayerHealth : HealthBase
 
         // Activar feedback de muerte (Audios y efectos visuales)
         playerHealthFeedback.OnDeathFeedback();
-
+        GameManagerUpdated.Instance.ChangeState(GameManagerUpdated.GameState.GameOverScreen);
 
         // TODO: Activar animación de muerte
         // TODO: Mostrar pantalla de Game Over

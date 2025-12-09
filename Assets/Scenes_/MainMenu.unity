@@ -389,16 +389,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 687466324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 284ddfe6d941b90468ba34e633333662, type: 3}
+  m_Script: {fileID: 11500000, guid: bae5d4c9c6635b945b0c61f52a46e2eb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManagerUpdated
-  currentState: 0
-  initialSceneName: 
-  pauseMenuPanel: {fileID: 0}
-  gameOverMenuPanel: {fileID: 0}
-  VictoryMenuPanel: {fileID: 0}
-  uiScreenManager: {fileID: 0}
-  pauseKey: 27
+  m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
 --- !u!1 &921444483
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,7 +694,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 687466327}
-        m_TargetAssemblyTypeName: GameManagerUpdated, Assembly-CSharp
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:

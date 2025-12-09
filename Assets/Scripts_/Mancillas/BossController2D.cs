@@ -49,6 +49,9 @@ public class BossController2D : MonoBehaviour
     public BoxCollider2D arenaBoundary;
     public Animator animator;
 
+    [SerializeField] private AudioManager audioManager;
+    [SerializeField] private EnemyAttackFeedback enemyAttackFeedback;
+
     private Rigidbody2D _rb;
     private bool _isActivated = false;
     private bool _isAttacking = false;
@@ -72,6 +75,12 @@ public class BossController2D : MonoBehaviour
 
     private void Update()
     {
+        // Verificar estado del juego antes de actualizar el jefe. Si no está en Gameplay, no hacer nada.
+        GameManagerUpdated.GameState state = GameManagerUpdated.Instance.CurrentState;
+        if (state != GameManagerUpdated.GameState.Gameplay) return;
+        Debug.Log("Estado del juego: " + state.ToString());
+
+
         if (playerTransform == null) return;
         if (!_isActivated)
         {
@@ -128,6 +137,11 @@ public class BossController2D : MonoBehaviour
 
     private IEnumerator FireballAttackRoutine()
     {
+        // Play attack feedback Effects and Audio
+        audioManager?.EnemyShoot();
+        enemyAttackFeedback.PlayAttackEffect();
+
+
         _isAttacking = true;
         // animator.SetTrigger(_animAttackFireball);
         yield return new WaitForSeconds(0.5f);
@@ -248,7 +262,7 @@ public class BossController2D : MonoBehaviour
             {
                 melee.Attack(); // Esto llamará a PerformAttack y aplicará daño al jugador
             }
-            Debug.Log("¡Jefe golpeó al jugador con el cuerpo!");
+            // Debug.Log("¡Jefe golpeó al jugador con el cuerpo!");
         }
     }
 
