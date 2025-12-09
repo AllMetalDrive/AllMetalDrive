@@ -40,6 +40,7 @@ public class ProjectileAttack : AttackBase
     [SerializeField] private GameObject projectilePrefab;  // Prefab del proyectil a instanciar
     [SerializeField] private Transform firePoint;          // Punto desde donde se generan los disparos
     [SerializeField] private AudioManager audioManager;    // Referencia al AudioManager para reproducir sonidos
+    [SerializeField] private PlayerAttackFeedback playerAttackFeedback; // Feedback visual del ataque del jugador
 
 
 
@@ -81,8 +82,11 @@ public class ProjectileAttack : AttackBase
         if (audioManager != null)
         {
             if (shooterType == ShooterType.Player)
+            {
+                // Play player shooting sound and feedback
                 audioManager.PlayerShoot();
-
+                playerAttackFeedback?.PlayAttackEffect();
+            }
             else if (shooterType == ShooterType.Enemy)
                 audioManager.EnemyShoot();
         }

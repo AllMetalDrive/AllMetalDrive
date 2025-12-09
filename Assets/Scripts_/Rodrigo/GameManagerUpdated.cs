@@ -26,13 +26,11 @@ public class GameManagerUpdated : MonoBehaviour
 	[Header("CONFIGURACIÓN DE ESCENAS")]
 	[SerializeField] private string initialSceneName = "";
 
-	private static GameManagerUpdated Intance;
-	public static GameManagerUpdated Instance => Intance;
+	private static GameManagerUpdated _instance;
+	public static GameManagerUpdated Instance => _instance;
 
 	[Header("MENÚS UI")]
 	[SerializeField] private GameObject pauseMenuPanel; // Asigna el panel del menú de pausa en el inspector
-	[SerializeField] private GameObject gameOverMenuPanel; // Asigna el panel del menú de Game Over en el inspector
-	[SerializeField] private GameObject VictoryMenuPanel; // Asigna el panel del menú de Victoria en el inspector
 
 	[Header("REFERENCIAS")]
 	[SerializeField] private UIScreenManager uiScreenManager; // Referencia al manejador de pantallas UI
@@ -43,24 +41,20 @@ public class GameManagerUpdated : MonoBehaviour
 
 	private void Awake()
 	{
-		if (Intance != null && Intance != this)
+		if (_instance != null && _instance != this)
 		{
 			Destroy(gameObject);
 			return;
 		}
-		Intance = this;
+		_instance = this;
 		//DontDestroyOnLoad(gameObject);
 	}
 
 	private void Start()
 	{
 		if (!string.IsNullOrEmpty(initialSceneName))
-			LoadScene(initialSceneName);
-		if (pauseMenuPanel != null)
-			pauseMenuPanel.SetActive(false);
-		if (gameOverMenuPanel != null)
-			gameOverMenuPanel.SetActive(false);
-		previousState = currentState; // Inicializa el estado previo correctamente
+			//LoadScene(initialSceneName);
+			previousState = currentState; // Inicializa el estado previo correctamente
 	}
 
 	[Header("TECLA DE PAUSA")]
@@ -82,41 +76,52 @@ public class GameManagerUpdated : MonoBehaviour
 	{
 		currentState = newState;
 
-		// Oculta todos los menús por defecto
-		if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
-		if (gameOverMenuPanel != null) gameOverMenuPanel.SetActive(false);
+		// if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
 
 		switch (newState)
 		{
+
+
 			case GameState.MainMenu:
-				LoadScene("MainMenu");
+				/* _isPaused = false;
+				Time.timeScale = 1f; */
+				// if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
 				ResumeGame();
 				break;
 			case GameState.Lobby:
-				LoadScene("Lobby");
-				ResumeGame();
+				/* _isPaused = false;
+				Time.timeScale = 1f; */
+				// if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
 				break;
 			case GameState.Gameplay:
-				// Aquí puedes cargar la escena de gameplay si lo deseas
+				/* _isPaused = false;
+				Time.timeScale = 1f; */
+				// if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
 				ResumeGame();
 				break;
 			case GameState.VictoryScene:
-				if (VictoryMenuPanel != null)
-					VictoryMenuPanel.SetActive(true);
-				// ResumeGame(); // No es necesario llamar a ResumeGame aquí. Activar el cofre de victoria no requiere reanudar el juego.
+				/* _isPaused = false;
+				Time.timeScale = 1f; */
+				ResumeGame();
+				uiScreenManager.ShowVictoryScreen();
+				// if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
 				break;
 			case GameState.GameOverScreen:
-				if (gameOverMenuPanel != null)
-					gameOverMenuPanel.SetActive(true);
+				/* _isPaused = false;
+				Time.timeScale = 1f; */
+				ResumeGame();
+				// if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
 				break;
 			case GameState.Pause:
+				_isPaused = true;
+				Time.timeScale = 0f;
 				if (pauseMenuPanel != null)
 					pauseMenuPanel.SetActive(true);
 				break;
 		}
 	}
 
-	public void LoadScene(string sceneName)
+	/* public void LoadScene(string sceneName)
 	{
 		if (string.IsNullOrEmpty(sceneName))
 		{
@@ -124,7 +129,7 @@ public class GameManagerUpdated : MonoBehaviour
 			return;
 		}
 		SceneManager.LoadScene(sceneName);
-	}
+	} */
 
 	// ==================================================
 	// ============== FUNCIONES AUXILIARES =============
@@ -142,7 +147,6 @@ public class GameManagerUpdated : MonoBehaviour
 
 	public void ResumeGame()
 	{
-		if (!_isPaused) return;
 		_isPaused = false;
 		Time.timeScale = 1f;
 		if (pauseMenuPanel != null)
@@ -154,12 +158,19 @@ public class GameManagerUpdated : MonoBehaviour
 		if (_isPaused)
 		{
 			ResumeGame();
-			// Solo regresa al estado previo si es válido
-			if (previousState != GameState.Pause && previousState != GameState.GameOverScreen)
+			// Regresa al estado previo solo si era jugable
+			if (previousState == GameState.Gameplay || previousState == GameState.Lobby)
+			{
 				ChangeState(previousState);
+			}
 		}
 		else
 		{
+			// Guarda el estado previo solo si el estado actual es jugable
+			if (currentState == GameState.Gameplay || currentState == GameState.Lobby)
+			{
+				previousState = currentState;
+			}
 			ChangeState(GameState.Pause);
 		}
 	}
@@ -171,11 +182,11 @@ public class GameManagerUpdated : MonoBehaviour
 		// Mostrar pantalla de Game Over
 		if (uiScreenManager != null)
 		{
-			uiScreenManager.ShowGameOver();
+			uiScreenManager.ShowGameOverScreen();
 		}
 		else
 		{
-			Debug.LogWarning("PlayerHealth: UIScreenManager no asignado.");
+			Debug.LogWarning("UIScreenManager no asignado.");
 		}
 	}
 

@@ -7,7 +7,7 @@ public class UIScreenManager : MonoBehaviour
     [SerializeField] private GameObject victoryScreen;
 
     // Llama este método para mostrar la pantalla de Game Over
-    public void ShowGameOver()
+    public void ShowGameOverScreen()
     {
         if (gameOverScreen != null)
             gameOverScreen.SetActive(true);

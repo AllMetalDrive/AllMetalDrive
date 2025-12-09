@@ -31,6 +31,7 @@
 *******************************************************/
 
 using UnityEngine;
+using System.Collections;
 
 public class EnemyHealthFeedback : MonoBehaviour
 {
@@ -38,15 +39,21 @@ public class EnemyHealthFeedback : MonoBehaviour
 
     [Header("REFERENCIAS")]
     [SerializeField] private EnemyHealth enemyHealth;
-    [SerializeField] private AudioManager audioManager; 
+    [SerializeField] private AudioManager audioManager;
+    [SerializeField] private Material dissolveMaterial;
+    private Material _runtimeMat;
+
 
     [Header("EFECTOS VISUALES")]
-    [SerializeField] private GameObject damageEffect; 
-    [SerializeField] private GameObject healEffect; 
+    [SerializeField] private GameObject damageEffect;
+    [SerializeField] private GameObject healEffect;
     [SerializeField] private GameObject deathEffect;
 
     [Header("CONFIGURACIÓN DE EFECTOS")]
     [SerializeField] private float effectLifetime = 2f; // Tiempo antes de destruir efectos visuales
+    [SerializeField] private float dissolveDuration = 1.5f;
+    private bool isDissolving = false;
+
 
 
     // ======================= MÉTODOS PRINCIPALES =======================
@@ -76,6 +83,9 @@ public class EnemyHealthFeedback : MonoBehaviour
     {
         audioManager?.EnemyDeath();
         //TriggerEffect(deathEffect);
+        
+        StartCoroutine(DissolveEffect());
+        // Activar animacion de muerte o efectos adicionales aquí si es necesario
     }
 
 
@@ -93,6 +103,37 @@ public class EnemyHealthFeedback : MonoBehaviour
 
         if (effectLifetime > 0f)
             Destroy(instance, effectLifetime);
+    }
+
+    // Callback para notificar cuando termina el efecto de disolución
+    public System.Action OnDissolveComplete;
+
+    // Efecto de disolución al morir (requiere shader adecuado)
+    private IEnumerator DissolveEffect()
+    {
+        isDissolving = true;
+
+        // Asignar el material de disolución al renderer
+        var renderer = GetComponentInChildren<Renderer>();
+        if (renderer != null && dissolveMaterial != null)
+        {
+            // Instanciar el material para no afectar a otros enemigos
+            _runtimeMat = new Material(dissolveMaterial);
+            renderer.material = _runtimeMat;
+
+            float t = 0f;
+            while (t < dissolveDuration)
+            {
+                float dissolveAmount = Mathf.Lerp(0f, 1f, t / dissolveDuration);
+                _runtimeMat.SetFloat("_DissolveAmount", dissolveAmount);
+                t += Time.deltaTime;
+                yield return null;
+            }
+            _runtimeMat.SetFloat("_DissolveAmount", 1f);
+        }
+
+        // Notificar a EnemyHealth que terminó el efecto
+        OnDissolveComplete?.Invoke();
     }
 
 
