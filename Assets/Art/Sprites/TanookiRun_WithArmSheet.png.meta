@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c395b89663c9496498a72b4cc0cbdf33
+guid: 374fd3360ef47ef40a5ec1649fdf7360
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 340.5
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,177 +97,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TanookiArmShootingSpriteSheet_0
+      name: TanookiRun_WithArmSheet_0
       rect:
         serializedVersion: 2
-        x: 167
-        y: 652
-        width: 574
-        height: 228
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 117
+        y: 1122
+        width: 862
+        height: 922
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83d6745db1332234e9d7e460878830ee
-      internalID: -1618647715
+      spriteID: 5cb8755a06c51f94e89de07984f2e2fe
+      internalID: 1075206607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TanookiArmShootingSpriteSheet_1
+      name: TanookiRun_WithArmSheet_1
       rect:
         serializedVersion: 2
-        x: 878
-        y: 685
-        width: 536
-        height: 280
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 1097
+        y: 1120
+        width: 866
+        height: 906
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cb3bbc9635bf9c489d718f66a5028fb
-      internalID: -596385760
+      spriteID: cfac29a1d7621b54a8841bb679952141
+      internalID: -307100004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TanookiArmShootingSpriteSheet_2
+      name: TanookiRun_WithArmSheet_2
       rect:
         serializedVersion: 2
-        x: 1515
-        y: 672
-        width: 529
-        height: 325
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 2069
+        y: 1120
+        width: 904
+        height: 866
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbc153beea36f9543a80d96e7ceef055
-      internalID: 813514453
+      spriteID: 34c571766e14f584d8460f8f4c3a576f
+      internalID: 1165959364
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TanookiArmShootingSpriteSheet_3
+      name: TanookiRun_WithArmSheet_3
       rect:
         serializedVersion: 2
-        x: 2174
-        y: 681
-        width: 537
-        height: 279
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 3075
+        y: 1120
+        width: 869
+        height: 840
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0cd3e4527c3b4b489ca27b977b996f7
-      internalID: -1424828116
+      spriteID: 5ead88abace1a7a41b1a7cc216a6a6c9
+      internalID: 2088132647
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TanookiArmShootingSpriteSheet_4
+      name: TanookiRun_WithArmSheet_4
       rect:
         serializedVersion: 2
-        x: 149
-        y: 238
-        width: 580
-        height: 220
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 153
+        y: 127
+        width: 846
+        height: 923
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4826bb58f8733e4e9a0903b49bee4ee
-      internalID: -624176484
+      spriteID: 92f59c1c3e5e0084da3eb3064715053f
+      internalID: 48098243
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TanookiArmShootingSpriteSheet_5
+      name: TanookiRun_WithArmSheet_5
       rect:
         serializedVersion: 2
-        x: 873
-        y: 217
-        width: 580
-        height: 222
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 1127
+        y: 125
+        width: 854
+        height: 905
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 594135cb451e3234f86b251416fb2b44
-      internalID: 1627735127
+      spriteID: daf27857b52d3ab49a621cbce7c78d19
+      internalID: -1046303335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TanookiArmShootingSpriteSheet_6
+      name: TanookiRun_WithArmSheet_6
       rect:
         serializedVersion: 2
-        x: 1583
-        y: 186
-        width: 580
-        height: 221
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 2088
+        y: 125
+        width: 905
+        height: 866
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2fee94a57dc3044da32cac01c54b7b6
-      internalID: -608788871
+      spriteID: bb8dc54450c99ec45a06bf6cf6057dc4
+      internalID: -1484118076
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TanookiArmShootingSpriteSheet_7
+      name: TanookiRun_WithArmSheet_7
       rect:
         serializedVersion: 2
-        x: 2312
-        y: 229
-        width: 573
-        height: 228
-      alignment: 4
-      pivot: {x: 0, y: 0.5}
+        x: 3095
+        y: 125
+        width: 868
+        height: 840
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ced2fa00074b2b349ab63bc0add4661b
-      internalID: 2042961259
+      spriteID: 34af04df7e2a12a4f8fd706ba439f99a
+      internalID: 1504505481
       vertices: []
       indices: 
       edges: []
@@ -276,7 +276,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 54ff065f05fa4df49b8bcb4634cdeaaf
+    spriteID: deb2e658fd467f44b85b02704906d2d3
     internalID: 0
     vertices: []
     indices: 
@@ -286,16 +286,16 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.0,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":4,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      TanookiArmShootingSpriteSheet_0: -1618647715
-      TanookiArmShootingSpriteSheet_1: -596385760
-      TanookiArmShootingSpriteSheet_2: 813514453
-      TanookiArmShootingSpriteSheet_3: -1424828116
-      TanookiArmShootingSpriteSheet_4: -624176484
-      TanookiArmShootingSpriteSheet_5: 1627735127
-      TanookiArmShootingSpriteSheet_6: -608788871
-      TanookiArmShootingSpriteSheet_7: 2042961259
+      TanookiRun_WithArmSheet_0: 1075206607
+      TanookiRun_WithArmSheet_1: -307100004
+      TanookiRun_WithArmSheet_2: 1165959364
+      TanookiRun_WithArmSheet_3: 2088132647
+      TanookiRun_WithArmSheet_4: 48098243
+      TanookiRun_WithArmSheet_5: -1046303335
+      TanookiRun_WithArmSheet_6: -1484118076
+      TanookiRun_WithArmSheet_7: 1504505481
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

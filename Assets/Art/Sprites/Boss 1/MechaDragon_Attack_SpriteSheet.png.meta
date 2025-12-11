@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f66d4e6b53e242847bac90ec6af5fcb3
+guid: 1df59c1f197206f429382b0552a2df7a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sheet_Dragon_Moveset-HD-Dragon_Me_0
+      name: MechaDragon_Attack_SpriteSheet_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 250
-        width: 759
-        height: 260
+        x: 193
+        y: 1234
+        width: 1112
+        height: 451
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,20 +112,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f12c5e5f185b8854a9dde611a9ac5932
-      internalID: 1068062378
+      spriteID: 26021a3f6cc8d1041ba3a9450bc442bc
+      internalID: -118939735
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_Dragon_Moveset-HD-Dragon_Me_1
+      name: MechaDragon_Attack_SpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 774
-        y: 241
-        width: 713
-        height: 267
+        x: 1415
+        y: 1155
+        width: 1174
+        height: 611
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be390de3abc0c7e4da65b839fb64f8aa
-      internalID: 998065011
+      spriteID: b301cb8163f58834b92c9b032a79f3ab
+      internalID: -1662996620
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_Dragon_Moveset-HD-Dragon_Me_2
+      name: MechaDragon_Attack_SpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 1493
-        y: 241
-        width: 764
-        height: 269
+        x: 2722
+        y: 1241
+        width: 1233
+        height: 413
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3da7b4fd0ad026d4e9574aca7ee58914
-      internalID: 1105348950
+      spriteID: 352b702ce89334b4fb4fd397cb7f4623
+      internalID: 339986094
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_Dragon_Moveset-HD-Dragon_Me_3
+      name: MechaDragon_Attack_SpriteSheet_3
       rect:
         serializedVersion: 2
-        x: 2266
-        y: 183
-        width: 681
-        height: 327
+        x: 200
+        y: 209
+        width: 1185
+        height: 650
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,20 +178,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7593f5f3516c8c749a89d11bce90fb48
-      internalID: -137382545
+      spriteID: cbf28cd1ee911e6498a1bb85f503e0c4
+      internalID: -1812753912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sheet_Dragon_Moveset-HD-Dragon_Me_4
+      name: MechaDragon_Attack_SpriteSheet_4
       rect:
         serializedVersion: 2
-        x: 2955
-        y: 177
-        width: 681
-        height: 328
+        x: 1663
+        y: 233
+        width: 1178
+        height: 598
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,30 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26d45456e7c5caa42b3c891b39792424
-      internalID: -763846691
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sheet_Dragon_Moveset-HD-Dragon_Me_5
-      rect:
-        serializedVersion: 2
-        x: 3643
-        y: 157
-        width: 685
-        height: 353
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d7e32ba885a125f428deaefb0bd30c05
-      internalID: 34342003
+      spriteID: 81e207480f9fa904488bb4016581840d
+      internalID: 705841898
       vertices: []
       indices: 
       edges: []
@@ -232,7 +210,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 18a431881de6cc449a9427a55c61e6de
+    spriteID: e444a7d6ff9d20a47ae4be31cd47a8ce
     internalID: 0
     vertices: []
     indices: 
@@ -244,12 +222,11 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      sheet_Dragon_Moveset-HD-Dragon_Me_0: 1068062378
-      sheet_Dragon_Moveset-HD-Dragon_Me_1: 998065011
-      sheet_Dragon_Moveset-HD-Dragon_Me_2: 1105348950
-      sheet_Dragon_Moveset-HD-Dragon_Me_3: -137382545
-      sheet_Dragon_Moveset-HD-Dragon_Me_4: -763846691
-      sheet_Dragon_Moveset-HD-Dragon_Me_5: 34342003
+      MechaDragon_Attack_SpriteSheet_0: -118939735
+      MechaDragon_Attack_SpriteSheet_1: -1662996620
+      MechaDragon_Attack_SpriteSheet_2: 339986094
+      MechaDragon_Attack_SpriteSheet_3: -1812753912
+      MechaDragon_Attack_SpriteSheet_4: 705841898
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

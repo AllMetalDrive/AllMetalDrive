@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a076944388c5ec14d9d3bef0f57adbbf
+guid: 6c02e4ed21a128e41945b252ad3b1fb0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 409.5
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jumping_Tanooki_Girl_SpriteSheet_0
+      name: Roll_boton__0
       rect:
         serializedVersion: 2
-        x: 255
-        y: 1489
-        width: 596
-        height: 1059
+        x: 667
+        y: 767
+        width: 2018
+        height: 883
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,96 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 70b6a0b0256bebb43b87c5ee71d3acb9
-      internalID: 1593584409
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jumping_Tanooki_Girl_SpriteSheet_1
-      rect:
-        serializedVersion: 2
-        x: 1117
-        y: 1491
-        width: 698
-        height: 815
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0b3f2e1c5f02fd149ade1395263b148b
-      internalID: 671717162
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jumping_Tanooki_Girl_SpriteSheet_2
-      rect:
-        serializedVersion: 2
-        x: 2167
-        y: 1492
-        width: 752
-        height: 768
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6dce5581421b2a845a58b5ba50f7c7df
-      internalID: -965039954
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jumping_Tanooki_Girl_SpriteSheet_3
-      rect:
-        serializedVersion: 2
-        x: 3243
-        y: 1474
-        width: 752
-        height: 710
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 74c78ac7e1ced3b4cb305eeb41bb6393
-      internalID: 975393997
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jumping_Tanooki_Girl_SpriteSheet_4
-      rect:
-        serializedVersion: 2
-        x: 287
-        y: 161
-        width: 554
-        height: 1145
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 237e26f7f133e424685af8344874cbd5
-      internalID: -2049993041
+      spriteID: 95b615f4ca6832d469e66786cce44bff
+      internalID: -2050869013
       vertices: []
       indices: 
       edges: []
@@ -210,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3afefe574a94464469ed06b67219b85f
+    spriteID: c67a88dfa74e9f84f8de2c947314cbea
     internalID: 0
     vertices: []
     indices: 
@@ -222,11 +134,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Jumping_Tanooki_Girl_SpriteSheet_0: 1593584409
-      Jumping_Tanooki_Girl_SpriteSheet_1: 671717162
-      Jumping_Tanooki_Girl_SpriteSheet_2: -965039954
-      Jumping_Tanooki_Girl_SpriteSheet_3: 975393997
-      Jumping_Tanooki_Girl_SpriteSheet_4: -2049993041
+      Roll_boton__0: -2050869013
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
