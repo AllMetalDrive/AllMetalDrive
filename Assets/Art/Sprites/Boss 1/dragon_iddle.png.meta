@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9ca77098d3248dc4484541298705cae7
+guid: 8df03aa53fb7cb3448f641aad324505a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 409.5
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TanookiRunSpriteSheet_0
+      name: dragon_iddle_0
       rect:
         serializedVersion: 2
-        x: 145
-        y: 1307
-        width: 674
-        height: 1026
+        x: 138
+        y: 2522
+        width: 1102
+        height: 372
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,20 +112,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: be1cca675ff087743a444c6c3241c603
-      internalID: -798432482
+      spriteID: 5cad1fb9cef806645bfe9230de4b2582
+      internalID: -1573736095
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TanookiRunSpriteSheet_1
+      name: dragon_iddle_1
       rect:
         serializedVersion: 2
-        x: 1063
-        y: 1305
-        width: 890
-        height: 1004
+        x: 2083
+        y: 2530
+        width: 1064
+        height: 353
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c418b0c6a1f5b0459578d7a0721e87b
-      internalID: -449481149
+      spriteID: ce7ce337417403b479e33476a3fe4764
+      internalID: -1692813207
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TanookiRunSpriteSheet_2
+      name: dragon_iddle_2
       rect:
         serializedVersion: 2
-        x: 2139
-        y: 1303
-        width: 856
-        height: 959
+        x: 177
+        y: 1341
+        width: 999
+        height: 472
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09374176459fa984ab03866ea707850e
-      internalID: 1661677900
+      spriteID: 220e911ab33acf2448699a6328ba5762
+      internalID: -1492402441
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TanookiRunSpriteSheet_3
+      name: dragon_iddle_3
       rect:
         serializedVersion: 2
-        x: 3163
-        y: 1300
-        width: 706
-        height: 931
+        x: 2096
+        y: 1347
+        width: 1002
+        height: 460
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,20 +178,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed13982d840a219448c806edd46f5681
-      internalID: 1563933127
+      spriteID: 85bb5189ce42e144b979ec153585c2c7
+      internalID: 1114634048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TanookiRunSpriteSheet_4
+      name: dragon_iddle_4
       rect:
         serializedVersion: 2
-        x: 171
-        y: 171
-        width: 656
-        height: 1026
+        x: 181
+        y: 206
+        width: 1004
+        height: 568
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 246005e0269ff1d49ae310f213eeebf2
-      internalID: 1208111628
+      spriteID: 78b9c23cfbced184cad5ef8d957e938f
+      internalID: -886898303
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TanookiRunSpriteSheet_5
+      name: dragon_iddle_5
       rect:
         serializedVersion: 2
-        x: 1085
-        y: 171
-        width: 878
-        height: 1006
+        x: 2060
+        y: 360
+        width: 1102
+        height: 369
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,52 +222,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b138a40bb3cc344a91ba0aacbc481f4
-      internalID: 1011863881
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TanookiRunSpriteSheet_6
-      rect:
-        serializedVersion: 2
-        x: 2145
-        y: 167
-        width: 856
-        height: 960
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3ba990514b4e4db48a38e86b0b85c3aa
-      internalID: 1987665939
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TanookiRunSpriteSheet_7
-      rect:
-        serializedVersion: 2
-        x: 3169
-        y: 165
-        width: 706
-        height: 932
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 41d733338f718854e81b7646b41987ca
-      internalID: 747343633
+      spriteID: 42e1d60c80e02544db792d11315a2533
+      internalID: 456276686
       vertices: []
       indices: 
       edges: []
@@ -276,7 +232,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d8bdc2d45c9a4a647ae931b9fe43b04e
+    spriteID: c10d0a607640ec145a1f3be8d8687777
     internalID: 0
     vertices: []
     indices: 
@@ -288,14 +244,12 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      TanookiRunSpriteSheet_0: -798432482
-      TanookiRunSpriteSheet_1: -449481149
-      TanookiRunSpriteSheet_2: 1661677900
-      TanookiRunSpriteSheet_3: 1563933127
-      TanookiRunSpriteSheet_4: 1208111628
-      TanookiRunSpriteSheet_5: 1011863881
-      TanookiRunSpriteSheet_6: 1987665939
-      TanookiRunSpriteSheet_7: 747343633
+      dragon_iddle_0: -1573736095
+      dragon_iddle_1: -1692813207
+      dragon_iddle_2: -1492402441
+      dragon_iddle_3: 1114634048
+      dragon_iddle_4: -886898303
+      dragon_iddle_5: 456276686
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
