@@ -3,14 +3,14 @@
 * Script: HealthBase.cs
 * Author: José Cruz
 * Created: 15/11/2025
-* Last Modified: 16/11/2025 by José Cruz
+* Last Modified: 08/12/2025 by Rodrigo Garcia de Quevedo
 *
 * Description:
 * Clase base encargada de manejar salud, daño y curación.
 * Es heredada por PlayerHealth y EnemyHealth para 
 * definir comportamientos específicos de cada entidad.
 *
-* Hours Worked: [3]
+* Hours Worked: [3.5]
 *
 * Dependencies:
 * - Clases hijas (PlayerHealth, EnemyHealth)
@@ -28,6 +28,7 @@
 *******************************************************/
 
 using UnityEngine;
+using System; // necesario para eventos
 
 public abstract class HealthBase : MonoBehaviour
 {
@@ -43,6 +44,18 @@ public abstract class HealthBase : MonoBehaviour
     [SerializeField] protected bool canTakeDamage = true;        // Indica si puede recibir daño
 
 
+    // ================== EVENTOS ==================
+    /// <summary>
+    /// Evento que notifica cambios de salud: (current, max)
+    /// </summary>
+    public event Action<int, int> OnHealthChanged;
+
+    /// <summary>
+    /// Evento que notifica la muerte de la entidad.
+    /// </summary>
+    public event Action OnDeathEvent;
+
+
 
     // ==================================================
     // =================== EVENTOS UNITY ================
@@ -54,6 +67,8 @@ public abstract class HealthBase : MonoBehaviour
     protected virtual void Start()
     {
         currentHealth = maxHealth;
+        // Notificar UI/oyentes del valor inicial
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
 
@@ -76,6 +91,9 @@ public abstract class HealthBase : MonoBehaviour
 
         Debug.Log($"{gameObject.name} recibió {amount} daño. Salud actual: {currentHealth}");
 
+        // Notificar cambios (UI, sonidos, etc.)
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
+
         CheckHealthState();
     }
 
@@ -89,6 +107,9 @@ public abstract class HealthBase : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
         Debug.Log($"{gameObject.name} se curó {amount}. Salud actual: {currentHealth}");
+
+        // Notificar cambios (UI, sonidos, etc.)
+        OnHealthChanged?.Invoke(currentHealth, maxHealth);
     }
 
 
@@ -103,7 +124,11 @@ public abstract class HealthBase : MonoBehaviour
     protected virtual void CheckHealthState()
     {
         if (currentHealth <= 0)
+        {
+            // Notificar muerte antes de ejecutar lógica de muerte
+            OnDeathEvent?.Invoke();
             HandleDeath();
+        }
     }
 
     /// <summary>
