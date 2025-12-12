@@ -3,14 +3,13 @@
 * Script: EnemyHealth.cs
 * Author: José Cruz
 * Created: 15/11/2025
-* Last Modified: 16/11/2025 by José Cruz
+* Last Modified: 08/12/2025 by Rodrigo Garcia de Quevedo
 *
 * Description:
 * Implementación específica de HealthBase para enemigos.
-* Controla la muerte e inicialización personalizada para 
-* entidades enemigas.
+* Controla la muerte e inicialización personalizada para entidades enemigas.
 *
-* Hours Worked: [1]
+* Hours Worked: [2]
 *
 * Dependencies:
 * - HealthBase (clase padre)
@@ -64,7 +63,7 @@ public class EnemyHealth : HealthBase
         base.TakeDamage(amount);
 
         // Activar feedback de daño (Audios y efectos visuales)
-        enemyHealthFeedback.OnDamageFeedback();
+        enemyHealthFeedback?.OnDamageFeedback();
     }
 
     /// <summary>
@@ -76,7 +75,7 @@ public class EnemyHealth : HealthBase
         base.Heal(amount);
 
         // Activar feedback de curación (Audios y efectos visuales)
-        enemyHealthFeedback.OnHealFeedback();
+        enemyHealthFeedback?.OnHealFeedback();
     }
 
     /// <summary>
@@ -85,17 +84,14 @@ public class EnemyHealth : HealthBase
     protected override void HandleDeath()
     {
         Debug.Log($"{gameObject.name} ha muerto.");
-    
-        GameManagerUpdated.Instance.TriggerGameOver();
 
         // Activar feedback de muerte (Audios y efectos visuales)
-        enemyHealthFeedback.OnDeathFeedback();
-        // Suscribirse al callback para destruir el objeto al terminar el dissolve
-        enemyHealthFeedback.OnDissolveComplete = () => Destroy(gameObject);
+        enemyHealthFeedback?.OnDeathFeedback();
 
         // TODO: Implementar animación de muerte
         // TODO: Soltar ítems o dar recompensas al jugador
         // TODO: Desactivar componentes del enemigo
 
+        //Destroy(gameObject);
     }
 }

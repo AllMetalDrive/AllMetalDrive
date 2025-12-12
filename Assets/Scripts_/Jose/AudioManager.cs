@@ -3,7 +3,7 @@
 * Script: AudioManager.cs
 * Author: José Cruz
 * Created: 16/11/2025
-* Last Modified: 17/11/2025 by José Cruz
+* Last Modified: 10/12/2025 by Rodrigo Garcia de Quevedo
 *
 * Description:
 * Administrador centralizado de audio para reproducir 
@@ -19,9 +19,11 @@
 *   (PlayerHealthFeedback, EnemyHealthFeedback, ataques, etc.)
 *
 * Sections:
+* - SINGLETON (nuevo)
 * - VARIABLES
 * - MÉTODOS PRINCIPALES
 * - FUNCIONES AUXILIARES
+* - MÚSICA DE FONDO
 * - EVENTOS UNITY
 *
 * Notes / Warnings:
@@ -33,6 +35,19 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    // ==================================================
+    // ==================== SINGLETON ====================
+    // ==================================================
+    /*
+     * Esta sección permite acceder al AudioManager desde 
+     * cualquier script con AudioManager.Instance.
+     * Necesario para que GameManager pueda iniciar música.
+     */
+     
+    public static AudioManager Instance { get; private set; }
+
+
+
     // ==================================================
     // ===================== VARIABLES ===================
     // ==================================================
@@ -48,23 +63,23 @@ public class AudioManager : MonoBehaviour
 
 
     [Header("CLIPS JUGADOR")]
-    [SerializeField] private AudioClip playerDamageClip;   // Sonido al recibir daño
-    [SerializeField] private AudioClip playerHealClip;     // Sonido al curarse
-    [SerializeField] private AudioClip playerDeathClip;    // Sonido al morir
-    [SerializeField] private AudioClip playerShootClip;    // Sonido al disparar
+    [SerializeField] private AudioClip playerDamageClip;
+    [SerializeField] private AudioClip playerHealClip;
+    [SerializeField] private AudioClip playerDeathClip;
+    [SerializeField] private AudioClip playerShootClip;
 
 
     [Header("CLIPS ENEMIGO")]
-    [SerializeField] private AudioClip enemyDamageClip;    // Sonido al recibir daño
-    [SerializeField] private AudioClip enemyHealClip;      // Sonido al curarse
-    [SerializeField] private AudioClip enemyDeathClip;     // Sonido al morir
-    [SerializeField] private AudioClip enemyAttackClip;    // Sonido al disparar / atacar
+    [SerializeField] private AudioClip enemyDamageClip;
+    [SerializeField] private AudioClip enemyHealClip;
+    [SerializeField] private AudioClip enemyDeathClip;
+    [SerializeField] private AudioClip enemyAttackClip;
 
 
     [Header("POOL DE AUDIOSOURCES")]
-    [SerializeField] private int poolSize = 5;             // Cantidad de fuentes en el pool
-    private AudioSource[] sfxPool;                         // Arreglo de AudioSources reutilizables
-    private int poolIndex = 0;                             // Índice rotatorio para selección de AudioSource
+    [SerializeField] private int poolSize = 5;
+    private AudioSource[] sfxPool;
+    private int poolIndex = 0;
 
 
 
@@ -72,32 +87,14 @@ public class AudioManager : MonoBehaviour
     // =============== MÉTODOS PRINCIPALES ==============
     // ==================================================
 
-    /// <summary>Reproduce sonido cuando el jugador recibe daño.</summary>
     public void PlayerTakeDamage() => PlayClip(playerDamageClip);
-
-    /// <summary>Reproduce sonido cuando el jugador se cura.</summary>
     public void PlayerHeal() => PlayClip(playerHealClip);
-
-    /// <summary>Reproduce sonido cuando el jugador muere.</summary>
     public void PlayerDeath() => PlayClip(playerDeathClip);
-
-    /// <summary>Reproduce sonido cuando el jugador dispara.</summary>
     public void PlayerShoot() => PlayClip(playerShootClip);
 
-
-    // ---Efectos de sonido de enemigos---
-    
-
-    /// <summary>Reproduce sonido cuando un enemigo recibe daño.</summary>
     public void EnemyTakeDamage() => PlayClip(enemyDamageClip);
-
-    /// <summary>Reproduce sonido cuando un enemigo se cura.</summary>
     public void EnemyHeal() => PlayClip(enemyHealClip);
-
-    /// <summary>Reproduce sonido cuando un enemigo muere.</summary>
     public void EnemyDeath() => PlayClip(enemyDeathClip);
-
-    /// <summary>Reproduce sonido cuando un enemigo dispara/ataca.</summary>
     public void EnemyShoot() => PlayClip(enemyAttackClip);
 
 
@@ -106,27 +103,62 @@ public class AudioManager : MonoBehaviour
     // ============= FUNCIONES AUXILIARES ===============
     // ==================================================
 
-    /// <summary>
-    /// Reproduce un AudioClip usando el sistema de pool.
-    /// </summary>
-    public void PlaySFX(AudioClip clip)
-    {
-        PlayClip(clip);
-    }
+    public void PlaySFX(AudioClip clip) => PlayClip(clip);
 
-    /// <summary>
-    /// Mecanismo interno para reproducir un clip usando un pool circular.
-    /// Garantiza reproducir múltiples sonidos sin cortarse entre sí.
-    /// </summary>
     private void PlayClip(AudioClip clip)
     {
-        if (clip == null || sfxPool == null || sfxPool.Length == 0)
-            return;
+        if (clip == null || sfxPool == null || sfxPool.Length == 0) return;
 
         AudioSource source = sfxPool[poolIndex];
         poolIndex = (poolIndex + 1) % sfxPool.Length;
-
         source.PlayOneShot(clip);
+    }
+
+
+
+    // ==================================================
+    // ================== MÚSICA DE FONDO ===============
+    // ==================================================
+
+    [Header("MÚSICA DE FONDO")]
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioClip gameplayMusicClip;
+
+    /// <summary>Reproduce música general asignada al inspector.</summary>
+    public void PlayMusic()
+    {
+        if (musicSource == null)
+        {
+            musicSource = gameObject.AddComponent<AudioSource>();
+            musicSource.loop = true;
+            musicSource.spatialBlend = 0f;
+        }
+
+        if (gameplayMusicClip == null) return;
+
+        musicSource.clip = gameplayMusicClip;
+        musicSource.Play();
+    }
+
+    /// <summary>Permite recibir música desde GameManager.</summary>
+    public void PlayMusic(AudioClip clip) // <-- Método que faltaba
+    {
+        if (clip == null) return;
+
+        if (musicSource == null)
+        {
+            musicSource = gameObject.AddComponent<AudioSource>();
+            musicSource.loop = true;
+            musicSource.spatialBlend = 0f;
+        }
+
+        musicSource.clip = clip;
+        musicSource.Play();
+    }
+
+    public void StopMusic()
+    {
+        if (musicSource != null) musicSource.Stop();
     }
 
 
@@ -135,27 +167,31 @@ public class AudioManager : MonoBehaviour
     // =================== EVENTOS UNITY ================
     // ==================================================
 
-    /// <summary>
-    /// Inicializa el AudioSource principal y genera el pool
-    /// de AudioSources secundarios para reproducción simultánea.
-    /// </summary>
     private void Awake()
     {
-        if (sfxSource == null)
-            sfxSource = GetComponent<AudioSource>();
+        // ---- SINGLETON ----
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
 
-        // Crear el pool de AudioSources
+
+        // ---- SFX POOL ----
+        if (sfxSource == null) sfxSource = GetComponent<AudioSource>();
+
         sfxPool = new AudioSource[poolSize];
-
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject newSourceObj = new GameObject($"SFX_Source_{i}");
-            newSourceObj.transform.parent = this.transform;
+            GameObject obj = new GameObject($"SFX_Source_{i}");
+            obj.transform.parent = this.transform;
 
-            AudioSource newSource = newSourceObj.AddComponent<AudioSource>();
-            newSource.playOnAwake = false;
-            newSource.spatialBlend = 0f; // Sonido 100% 2D
-            sfxPool[i] = newSource;
+            AudioSource src = obj.AddComponent<AudioSource>();
+            src.playOnAwake = false;
+            src.spatialBlend = 0f;
+            sfxPool[i] = src;
         }
     }
 }

@@ -3,14 +3,14 @@
 * Script: PlayerHealth.cs
 * Author: José Cruz
 * Created: 15/11/2025
-* Last Modified: 16/11/2025 by José Cruz
+* Last Modified: 08/12/2025 by Rodrigo Garcia de Quevedo
 *
 * Description:
 * Implementación específica de HealthBase para el jugador.
 * Controla la salud, muerte y cualquier efecto adicional
 * relacionado con el estado del jugador.
 *
-* Hours Worked: [1]
+* Hours Worked: [2]
 *
 * Dependencies:
 * - HealthBase (clase padre)
@@ -51,7 +51,7 @@ public class PlayerHealth : HealthBase
     /// </summary>
     protected override void Start()
     {
-        base.Start();
+        base.Start(); // ahora también dispara OnHealthChanged inicial
     }
 
 
@@ -68,7 +68,7 @@ public class PlayerHealth : HealthBase
         base.TakeDamage(amount);
 
         // Activar feedback de daño (Audios y efectos visuales)
-        playerHealthFeedback.OnDamageFeedback();
+        playerHealthFeedback?.OnDamageFeedback();
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ public class PlayerHealth : HealthBase
         base.Heal(amount);
 
         // Activar feedback de curación (Audios y efectos visuales)
-        playerHealthFeedback.OnHealFeedback();
+        playerHealthFeedback?.OnHealFeedback();
     }
 
     /// <summary>
@@ -92,8 +92,8 @@ public class PlayerHealth : HealthBase
         Debug.Log($"{gameObject.name} ha muerto.");
 
         // Activar feedback de muerte (Audios y efectos visuales)
-        playerHealthFeedback.OnDeathFeedback();
-        GameManagerUpdated.Instance.ChangeState(GameManagerUpdated.GameState.GameOverScreen);
+        playerHealthFeedback?.OnDeathFeedback();
+
 
         // TODO: Activar animación de muerte
         // TODO: Mostrar pantalla de Game Over
