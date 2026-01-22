@@ -2,25 +2,41 @@ using UnityEngine;
 
 public class FakeShadow : MonoBehaviour
 {
-    public Transform target;   // Jugador
-    public float heightOffset = 0.01f;
+    public Transform target;
+    public LayerMask groundLayer;
+
+    public float maxDistance = 3f;
     public float maxScale = 1f;
     public float minScale = 0.3f;
-    
+
     void Update()
     {
-        // Seguir posición (solo XZ si estás en 3D)
-        transform.position = new Vector3(
-            target.position.x,
-            transform.position.y,
-            target.position.z
+        if (target == null) return;
+
+        // Raycast 2D hacia abajo
+        RaycastHit2D hit = Physics2D.Raycast(
+            target.position,
+            Vector2.down,
+            maxDistance,
+            groundLayer
         );
 
-        // Cambiar tamaño según altura del jugador
-        float height = target.position.y;
-        float t = Mathf.InverseLerp(2f, 0f, height); // Ajusta este rango
-        float scale = Mathf.Lerp(minScale, maxScale, t);
+        // Debug visual
+        Debug.DrawRay(target.position, Vector2.down * maxDistance, Color.red);
 
-        transform.localScale = new Vector3(scale, scale, scale);
+        if (hit.collider != null)
+        {
+            // Posicionar la sombra en el suelo
+            transform.position = new Vector3(
+                hit.point.x,
+                hit.point.y + 0.01f,
+                transform.position.z
+            );
+
+            // Escalar según altura
+            float t = hit.distance / maxDistance;
+            float scale = Mathf.Lerp(maxScale, minScale, t);
+            transform.localScale = Vector3.one * scale;
+        }
     }
 }

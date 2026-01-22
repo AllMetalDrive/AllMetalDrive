@@ -189,10 +189,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthFeedback
   enemyHealth: {fileID: 307547849266455547}
   audioManager: {fileID: 0}
+  dissolveMaterial: {fileID: 0}
   damageEffect: {fileID: 0}
   healEffect: {fileID: 0}
   deathEffect: {fileID: 0}
   effectLifetime: 2
+  dissolveDuration: 1.5
 --- !u!114 &3228574421646472333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +213,7 @@ MonoBehaviour:
   range: 1
   targetLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
 --- !u!114 &2736970343522615237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,3 +231,4 @@ MonoBehaviour:
   projectilePrefab: {fileID: 0}
   firePoint: {fileID: 0}
   audioManager: {fileID: 0}
+  playerAttackFeedback: {fileID: 0}
