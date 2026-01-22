@@ -32,6 +32,8 @@
 
 using UnityEngine;
 using System.Collections;
+using MoreMountains.Feedbacks;
+using MoreMountains.Tools;
 
 public class EnemyHealthFeedback : MonoBehaviour
 {
@@ -54,7 +56,34 @@ public class EnemyHealthFeedback : MonoBehaviour
     [SerializeField] private float dissolveDuration = 1.5f;
     private bool isDissolving = false;
 
+    //public MMF_Player mMF_Player;
+    public MMProgressBar mMProgressBar;
 
+    // ======================= UI / HEALTH BINDING =======================
+
+    private void OnEnable()
+    {
+        if (enemyHealth == null)
+            enemyHealth = GetComponent<EnemyHealth>();
+
+        if (enemyHealth != null)
+            enemyHealth.OnHealthChanged += HandleHealthChanged;
+    }
+
+    private void OnDisable()
+    {
+        if (enemyHealth != null)
+            enemyHealth.OnHealthChanged -= HandleHealthChanged;
+    }
+
+    private void HandleHealthChanged(int current, int max)
+    {
+        if (mMProgressBar == null)
+            return;
+
+        float normalized = (max <= 0) ? 0f : (float)current / max;
+        mMProgressBar.UpdateBar01(normalized);
+    }
 
     // ======================= MÉTODOS PRINCIPALES =======================
 
@@ -83,7 +112,7 @@ public class EnemyHealthFeedback : MonoBehaviour
     {
         audioManager?.EnemyDeath();
         //TriggerEffect(deathEffect);
-        
+
         StartCoroutine(DissolveEffect());
         // Activar animacion de muerte o efectos adicionales aquí si es necesario
     }

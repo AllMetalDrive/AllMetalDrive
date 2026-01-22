@@ -100,10 +100,10 @@ TextureImporter:
       name: dragon_dash_0
       rect:
         serializedVersion: 2
-        x: 615
-        y: 2425
-        width: 974
-        height: 619
+        x: 467
+        y: 2429
+        width: 1117
+        height: 817
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -122,10 +122,10 @@ TextureImporter:
       name: dragon_dash_1
       rect:
         serializedVersion: 2
-        x: 2541
+        x: 2325
         y: 2420
-        width: 968
-        height: 633
+        width: 1427
+        height: 826
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,7 +147,7 @@ TextureImporter:
         x: 4216
         y: 2406
         width: 1081
-        height: 523
+        height: 840
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,10 +166,10 @@ TextureImporter:
       name: dragon_dash_3
       rect:
         serializedVersion: 2
-        x: 486
-        y: 1153
-        width: 1041
-        height: 957
+        x: 459
+        y: 1127
+        width: 1125
+        height: 983
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,10 +188,10 @@ TextureImporter:
       name: dragon_dash_4
       rect:
         serializedVersion: 2
-        x: 2400
-        y: 1161
-        width: 1326
-        height: 912
+        x: 2321
+        y: 1123
+        width: 1431
+        height: 995
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,10 +210,10 @@ TextureImporter:
       name: dragon_dash_5
       rect:
         serializedVersion: 2
-        x: 4272
-        y: 1434
-        width: 1004
-        height: 409
+        x: 4256
+        y: 1127
+        width: 1047
+        height: 995
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -232,10 +232,10 @@ TextureImporter:
       name: dragon_dash_6
       rect:
         serializedVersion: 2
-        x: 519
-        y: 66
-        width: 1067
-        height: 957
+        x: 459
+        y: 70
+        width: 1121
+        height: 995
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -254,10 +254,10 @@ TextureImporter:
       name: dragon_dash_7
       rect:
         serializedVersion: 2
-        x: 2343
-        y: 275
-        width: 1051
-        height: 593
+        x: 2328
+        y: 68
+        width: 1420
+        height: 995
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -276,10 +276,10 @@ TextureImporter:
       name: dragon_dash_8
       rect:
         serializedVersion: 2
-        x: 4289
-        y: 244
-        width: 839
-        height: 436
+        x: 4256
+        y: 76
+        width: 1047
+        height: 995
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

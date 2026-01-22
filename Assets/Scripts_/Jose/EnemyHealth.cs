@@ -24,6 +24,7 @@
 *   temporalmente para pruebas.
 *******************************************************/
 
+using System;
 using UnityEngine;
 
 public class EnemyHealth : HealthBase

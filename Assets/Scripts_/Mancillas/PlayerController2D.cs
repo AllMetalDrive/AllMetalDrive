@@ -7,13 +7,13 @@
 *
 * Description:
 * Controls the player's 2.5D movement, combat, and UI feedback.
-* Now includes dash invincibility toggle and UI cooldown indicator.
+* Includes jump anticipation animation with movement lock.
 ********/
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // Necesario para controlar la Imagen del UI
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController2D : MonoBehaviour
@@ -28,24 +28,20 @@ public class PlayerController2D : MonoBehaviour
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
 
-    [Header("Ground Check")]
-    public Transform groundCheck;
-    public float groundRadius = 0.2f;
-    public LayerMask groundLayer;
-
     [Header("Dash Settings")]
     public float dashForce = 18f;
     public float dashCooldown = 1.2f;
-    public float dashTime = 0.15f; // ¡Ahora es pública para editar en Inspector!
+    public float dashTime = 0.15f;
     public KeyCode dashKey = KeyCode.LeftShift;
 
     [Header("Dash Upgrades & Skills")]
-    public bool canDashInvincibility = false; // Activa esto cuando el jugador obtenga el Power-Up
-    public bool IsInvincible { get; private set; } // Propiedad para que otros scripts lean si eres invencible
+    public bool canDashInvincibility = false;
+    public bool IsInvincible { get; private set; }
 
     [Header("UI Settings")]
-    public Image dashCooldownImage; // Arrastra aquí la imagen de la UI
+    public Image dashCooldownImage;
 
+    // --- Dash ---
     private float nextDash = 0f;
     private bool isDashing = false;
     private float dashTimer;
@@ -53,10 +49,21 @@ public class PlayerController2D : MonoBehaviour
     // --- Movimiento ---
     private Rigidbody2D rb;
     private float moveInput;
-    private bool isGrounded;
 
     // --- Flip ---
     private bool facingRight = true;
+
+    // --- Animator ---
+    public Animator animator;
+
+    [Header("References")]
+    public GroundCheck groundCheck;
+
+    // =====================================================
+    // NUEVO: Estados para salto con anticipación
+    // =====================================================
+    private bool isPreparingJump = false;   // Bloquea movimiento y flip
+    private bool jumpRequested = false;     // Evita múltiples requests
 
     void Start()
     {
@@ -66,20 +73,24 @@ public class PlayerController2D : MonoBehaviour
 
     void Update()
     {
-        // Actualizar la UI del Dash siempre
         UpdateDashUI();
 
         if (GameManagerUpdated.Instance.CurrentState != GameManagerUpdated.GameState.Gameplay)
-            return; 
+            return;
 
         // INPUT MOVIMIENTO
         moveInput = Input.GetAxisRaw("Horizontal");
 
         HandleFlip();
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        // =====================================================
+        // NUEVO: Ya NO saltamos aquí, solo activamos animación
+        // =====================================================
+        if (Input.GetButtonDown("Jump") && groundCheck.IsGrounded && !jumpRequested)
         {
-            Jump();
+            jumpRequested = true;
+            isPreparingJump = true;                 // Bloquea movimiento
+            animator.SetTrigger("prepareJump");    // Animación anticipación
         }
 
         if (Input.GetKeyDown(dashKey) && Time.time > nextDash && !isDashing)
@@ -90,41 +101,73 @@ public class PlayerController2D : MonoBehaviour
 
     void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, groundLayer);
+        animator.SetBool("isGrounded", groundCheck.IsGrounded);
 
         if (isDashing)
         {
-            rb.linearVelocity = new Vector2((facingRight ? 1 : -1) * dashForce, 0);
+            rb.linearVelocity = new Vector2(
+                (facingRight ? 1 : -1) * dashForce,
+                0
+            );
             return;
         }
 
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+        // =====================================================
+        // NUEVO: Bloqueo de movimiento horizontal
+        // durante la animación PrepareJump
+        // =====================================================
+        if (!isPreparingJump)
+        {
+            rb.linearVelocity = new Vector2(
+                moveInput * moveSpeed,
+                rb.linearVelocity.y
+            );
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+        }
+
+        bool isRunning = Mathf.Abs(moveInput) > 0.1f;
+        animator.SetBool("isRunning", isRunning);
+
         ApplyBetterJumpGravity();
     }
 
-    // --------------------------
-    //      MÉTODOS PRINCIPALES
-    // --------------------------
-
-    void Jump()
+    // =====================================================
+    // MÉTODO LLAMADO DESDE ANIMATION EVENT
+    // (al final de PrepareJump)
+    // =====================================================
+    public void Jump()
     {
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        animator.SetBool("isJumping", true);
+
+        // NUEVO: Liberamos el bloqueo
+        isPreparingJump = false;
+        jumpRequested = false;
     }
 
     void ApplyBetterJumpGravity()
     {
         if (rb.linearVelocity.y < 0)
         {
-            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+            rb.linearVelocity += Vector2.up *
+                Physics2D.gravity.y *
+                (fallMultiplier - 1) *
+                Time.fixedDeltaTime;
         }
         else if (rb.linearVelocity.y > 0 && !Input.GetButton("Jump"))
         {
-            rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
+            rb.linearVelocity += Vector2.up *
+                Physics2D.gravity.y *
+                (lowJumpMultiplier - 1) *
+                Time.fixedDeltaTime;
         }
     }
 
     // --------------------------
-    //      DASH & UI
+    // DASH & UI
     // --------------------------
 
     void StartDash()
@@ -134,39 +177,28 @@ public class PlayerController2D : MonoBehaviour
         nextDash = Time.time + dashCooldown;
         rb.gravityScale = 0f;
 
-        // Lógica de Invencibilidad
         if (canDashInvincibility)
-        {
             IsInvincible = true;
-            // Opcional: Aquí podrías cambiar el color del sprite para indicar invencibilidad
-        }
     }
 
     void StopDash()
     {
         isDashing = false;
         rb.gravityScale = 1f;
-        
-        // Desactivar Invencibilidad
         IsInvincible = false;
     }
 
     void UpdateDashUI()
     {
-        if (dashCooldownImage == null) return; // Evita errores si no asignaste la imagen
+        if (dashCooldownImage == null) return;
 
         if (Time.time > nextDash)
-        {
-            // El dash está listo
-            dashCooldownImage.fillAmount = 1; 
-        }
+            dashCooldownImage.fillAmount = 1;
         else
         {
-            // El dash está en enfriamiento (Cooldown)
-            // Calculamos cuánto tiempo falta (de 0 a 1)
             float cooldownRemaining = nextDash - Time.time;
-            float ratio = 1 - (cooldownRemaining / dashCooldown);
-            dashCooldownImage.fillAmount = ratio;
+            dashCooldownImage.fillAmount =
+                1 - (cooldownRemaining / dashCooldown);
         }
     }
 
@@ -176,18 +208,25 @@ public class PlayerController2D : MonoBehaviour
         {
             dashTimer -= Time.deltaTime;
             if (dashTimer <= 0)
-            {
                 StopDash();
-            }
         }
+
+        // NUEVO: Reset al aterrizar
+        if (groundCheck.IsGrounded)
+            animator.SetBool("isJumping", false);
     }
 
     // --------------------------
-    //      FLIP DEL PLAYER
+    // FLIP
     // --------------------------
 
     void HandleFlip()
     {
+        // =====================================================
+        // NUEVO: Evita flip durante PrepareJump
+        // =====================================================
+        if (isPreparingJump) return;
+
         if (moveInput > 0 && !facingRight) Flip(true);
         else if (moveInput < 0 && facingRight) Flip(false);
     }
